@@ -41,7 +41,6 @@
   "author": "Peter Newnham",
   "license": "MIT",
   "devDependencies": {
-    "babel": "^6.5.2",
     "babel-cli": "^6.8.0",
     "babel-core": "^6.8.0",
     "babel-loader": "^6.2.4",
@@ -71,7 +70,7 @@
     "webpack": "^1.13.0"
   },
   "dependencies": {
-    "htmlparser2": "^3.9.0"
+    "htmlparser2": "^8.0.1"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0 || ^16.0.0-0"

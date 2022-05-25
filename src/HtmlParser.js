@@ -1,4 +1,4 @@
-import htmlparser2 from 'htmlparser2';
+import * as htmlparser2 from 'htmlparser2';
 import processNodes from './processNodes';
 
 /**
