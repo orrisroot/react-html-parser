@@ -3,7 +3,7 @@ const htmlparser2 = {
 };
 const processNodes = jasmine.createSpy('processNodes').and.returnValue('processed');
 
-const HtmlParser = require('inject!HtmlParser')({
+const HtmlParser = require('inject-loader!HtmlParser')({
   htmlparser2,
   './processNodes': processNodes
 }).default;

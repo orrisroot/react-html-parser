@@ -1,4 +1,7 @@
-var webpackConfig = require('./webpack.config.test');
+const webpackConfig = require('./webpack.test');
+
+const puppeteer = require('puppeteer');
+process.env.CHROME_BIN = puppeteer.executablePath();
 
 module.exports = function(karma) {
 
@@ -15,13 +18,12 @@ module.exports = function(karma) {
     singleRun: false,
     frameworks: [
       'jasmine',
-      'phantomjs-shim',
-      'es6-shim'
+      'webpack'
     ],
     preprocessors: {
       'tests.webpack.js': 'webpack'
     },
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeHeadless'],
     colors: true,
     browserNoActivityTimeout: 100000,
     webpackMiddleware: {

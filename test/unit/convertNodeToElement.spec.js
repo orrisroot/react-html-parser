@@ -4,7 +4,7 @@ const ElementTypes = {
   type2: jasmine.createSpy('type2').and.returnValue('type2')
 };
 
-const convertNodeToElement = require('inject!convertNodeToElement')({
+const convertNodeToElement = require('inject-loader!convertNodeToElement')({
   './elementTypes': ElementTypes
 }).default;
 

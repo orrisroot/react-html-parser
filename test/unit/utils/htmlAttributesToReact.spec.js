@@ -1,6 +1,6 @@
 const isValidTagOrAttributeName = jasmine.createSpy('isValidTagOrAttributeName');
 
-const htmlAttributesToReact = require('inject!utils/htmlAttributesToReact')({
+const htmlAttributesToReact = require('inject-loader!utils/htmlAttributesToReact')({
   './isValidTagOrAttributeName': isValidTagOrAttributeName
 }).default;
 
