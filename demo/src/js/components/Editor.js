@@ -49,28 +49,28 @@ export default class Editor extends Component {
     if (view === 'html') {
       const { html } = this.props;
       return <AceEditor mode="html"
-                        theme="chrome"
-                        name="HTML_EDITOR"
-                        value={ html }
-                        width="100%"
-                        height="auto"
-                        onChange={ value => this.onEditorChange(value) }
-                        onLoad={ editor => this.onEditorLoad(editor) }
-                        editorProps={ editorProps }
+        theme="chrome"
+        name="HTML_EDITOR"
+        value={ html }
+        width="100%"
+        height="auto"
+        onChange={ value => this.onEditorChange(value) }
+        onLoad={ editor => this.onEditorLoad(editor) }
+        editorProps={ editorProps }
       />;
     }
     else {
       const { selectedExample } = this.props;
       const value = data[selectedExample].display ? data[selectedExample].display : `const options = ${JSON.stringify(data[selectedExample].options, null, 2)}`;
       return <AceEditor mode="javascript"
-                        theme="chrome"
-                        name="HTML_EDITOR"
-                        value={ value }
-                        width="100%"
-                        height="auto"
-                        readOnly={ true }
-                        onLoad={ editor => this.onEditorLoad(editor) }
-                        editorProps={ editorProps }
+        theme="chrome"
+        name="HTML_EDITOR"
+        value={ value }
+        width="100%"
+        height="auto"
+        readOnly={ true }
+        onLoad={ editor => this.onEditorLoad(editor) }
+        editorProps={ editorProps }
       />;
     }
 
