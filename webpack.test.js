@@ -7,7 +7,7 @@ webpackConfig = merge(dev, {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.[jt]sx?$/,
         use: [
           {
             loader: 'babel-loader',

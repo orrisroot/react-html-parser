@@ -1,9 +1,9 @@
 const VALID_TAG_REGEX = /^[a-zA-Z][a-zA-Z:_.\-\d]*$/;
 
-const nameCache = {};
+const nameCache: { [key: string]: boolean } = {};
 
-export default function isValidTagOrAttributeName(tagName) {
-  if(tagName === 'constructor') {
+const isValidTagOrAttributeName = (tagName: string) => {
+  if (tagName === 'constructor') {
     return false;
   }
 
@@ -11,4 +11,6 @@ export default function isValidTagOrAttributeName(tagName) {
     nameCache[tagName] = VALID_TAG_REGEX.test(tagName);
   }
   return nameCache[tagName];
-}
+};
+
+export default isValidTagOrAttributeName;

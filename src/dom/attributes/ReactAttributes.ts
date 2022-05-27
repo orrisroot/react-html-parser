@@ -2,9 +2,9 @@
  * Mapping of standard HTML attributes to their React counterparts
  * List taken and reversed from react/src/renderers/dom/shared/HTMLDOMPropertyConfig.js
  * https://github.com/facebook/react/blob/c9c3c339b757682f1154f1c915eb55e6a8766933/src/renderers/dom/shared/HTMLDOMPropertyConfig.js
- * @type {Object}
+ * @type {{[key: ReactAttribute]: string}}
  */
-export default {
+const ReactAttributes = {
   /**
    * Standard Properties
    */
@@ -160,5 +160,8 @@ export default {
   itemref: 'itemRef',
   results: 'results',
   security: 'security',
-  unselectable: 'unselectable'
-};
+  unselectable: 'unselectable',
+} as const;
+
+export type ReactAttribute = keyof typeof ReactAttributes;
+export default ReactAttributes;

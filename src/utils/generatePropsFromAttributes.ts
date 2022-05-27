@@ -1,25 +1,26 @@
+import { Attributes, Props } from '../interfaces';
 import htmlAttributesToReact from './htmlAttributesToReact';
 import inlineStyleToObject from './inlineStyleToObject';
 
 /**
  * Generates props for a React element from an object of HTML attributes
  *
- * @param {Object} attributes The HTML attributes
- * @param {String} key The key to give the react element
+ * @param {Attributes} attributes The HTML attributes
+ * @param {number | string} index The key to give the react element
  */
-export default function generatePropsFromAttributes(attributes, key) {
-
+const generatePropsFromAttributes = (attributes: Attributes, index?: number | string): Props => {
   // generate props
-  const props = Object.assign({}, htmlAttributesToReact(attributes), { key });
+  const props: Props = Object.assign({}, htmlAttributesToReact(attributes), { key: index ?? 1 });
 
   // if there is an inline/string style prop then convert it to a React style object
   // otherwise, it is invalid and omitted
-  if (typeof props.style === 'string' || props.style instanceof String) {
+  if (typeof props.style === 'string') {
     props.style = inlineStyleToObject(props.style);
   } else {
     delete props.style;
   }
 
   return props;
+};
 
-}
+export default generatePropsFromAttributes;

@@ -4,10 +4,10 @@
  * E.g. <input disabled> = <input disabled>
  *      <input disabled=""> = <input disabled>
  *      <input disabled="disabled"> = <input disabled>
- * @type {Array}
+ * @type {BooleanAttribute[]}
  */
-export default [
-  'allowfullScreen',
+const BooleanAttributes = [
+  'allowfullScreen', //
   'async',
   'autoplay',
   'capture',
@@ -30,5 +30,8 @@ export default [
   'scoped',
   'seamless',
   'selected',
-  'itemscope'
-];
+  'itemscope',
+] as const;
+
+export type BooleanAttribute = typeof BooleanAttributes[number];
+export default BooleanAttributes;

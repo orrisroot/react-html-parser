@@ -2,11 +2,11 @@ const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.ts',
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.[jt]sx?$/,
         exclude: /node_modules/,
         use: ['babel-loader']
       }
@@ -17,7 +17,7 @@ module.exports = {
       path.join(__dirname, 'src'),
       'node_modules'
     ],
-    extensions: ['.js']
+    extensions: ['.js', '.ts', '.jsx', '.tsx']
   },
   output: {
     library: {

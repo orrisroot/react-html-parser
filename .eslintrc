@@ -1,5 +1,13 @@
 {
-  "extends": "eslint:recommended",
+  "root": true,
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react/recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
@@ -13,9 +21,6 @@
     "jasmine": true,
     "es6": true
   },
-  "plugins": [
-    "react"
-  ],
   "rules": {
     "semi": [2, "always"],
     "quotes": [2, "single"],
@@ -23,5 +28,26 @@
     "eol-last": 2,
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "plugins": [
+         "@typescript-eslint"
+      ]
+    }
+  ],
+  "settings": {
+    "react": {
+       "version": "detect"
+    }
   }
 }

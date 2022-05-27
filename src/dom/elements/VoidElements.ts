@@ -1,10 +1,10 @@
 /**
  * List of void elements
  * These elements are not allowed to have children
- * @type {Array}
+ * @type {VoidElement[]}
  */
-export default [
-  'area',
+const VoidElements = [
+  'area', //
   'base',
   'br',
   'col',
@@ -19,5 +19,8 @@ export default [
   'param',
   'source',
   'track',
-  'wbr'
-];
+  'wbr',
+] as const;
+
+export type VoidElement = typeof VoidElements[number];
+export default VoidElements;

@@ -5,13 +5,15 @@
  */
 
 import { ElementType } from 'htmlparser2';
-
-import TextElementType from './TextElementType';
-import TagElementType from './TagElementType';
+import { ElementTypeFuncion } from '../interfaces';
 import StyleElementType from './StyleElementType';
+import TagElementType from './TagElementType';
+import TextElementType from './TextElementType';
 import UnsupportedElementType from './UnsupportedElementType';
 
-export default {
+const ElementTypes: {
+  [key: string]: ElementTypeFuncion;
+} = {
   [ElementType.Text]: TextElementType,
   [ElementType.Tag]: TagElementType,
   [ElementType.Style]: StyleElementType,
@@ -19,5 +21,7 @@ export default {
   [ElementType.Comment]: UnsupportedElementType,
   [ElementType.Script]: UnsupportedElementType,
   [ElementType.CDATA]: UnsupportedElementType,
-  [ElementType.Doctype]: UnsupportedElementType
+  [ElementType.Doctype]: UnsupportedElementType,
 };
+
+export default ElementTypes;
