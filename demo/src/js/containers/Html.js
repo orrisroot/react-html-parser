@@ -1,13 +1,11 @@
 import { connect } from 'react-redux';
-import Content from '../components/Html';
+import Html from '../components/Html';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     html: state.html,
-    selectedExample: state.selectedExample
+    selectedExample: state.selectedExample,
   };
 };
 
-export default connect(
-  mapStateToProps
-)(Content);
+export default connect(mapStateToProps)(Html);

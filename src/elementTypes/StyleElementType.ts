@@ -23,7 +23,7 @@ const StyleElementType: ElementTypeFuncion = (node: Node, index?: number | strin
   const props = generatePropsFromAttributes(node_.attribs, index);
 
   // create and return the element
-  return React.createElement("style", props, styles);
+  return React.createElement('style', props, styles);
 };
 
 export default StyleElementType;

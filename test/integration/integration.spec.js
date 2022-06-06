@@ -1,6 +1,7 @@
+import HtmlParser, { convertNodeToElement, htmlparser2 } from 'index';
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import HtmlParser, { convertNodeToElement, htmlparser2 } from 'index';
 
 const reactVersion = parseInt(require('react/package.json').version.match(/^(\d+)\./)[1], 10);
 
@@ -9,15 +10,18 @@ class HtmlParserComponent extends React.Component {
     return <div>{HtmlParser(this.props.html, this.props.options)}</div>;
   }
 }
+HtmlParserComponent.propTypes = {
+  html: PropTypes.string.isRequired,
+  options: PropTypes.object,
+};
 
-const test = function(html, override=null, options={}) {
+const test = function (html, override = null, options = {}) {
   const actual = ReactDOMServer.renderToStaticMarkup(<HtmlParserComponent html={html} options={options} />);
-  const expected = `<div>${override === null && html || override}</div>`;
+  const expected = `<div>${(override === null && html) || override}</div>`;
   expect(actual).toBe(expected);
 };
 
 describe('Integration tests: ', () => {
-
   it('should render a simple element', () => {
     test('<div>test</div>');
   });
@@ -31,17 +35,11 @@ describe('Integration tests: ', () => {
   });
 
   it('should handle bad html', () => {
-    test(
-      '<div class=test>test<ul><li>test1<li>test2</ul><span>test</span></div>',
-      '<div class="test">test<ul><li>test1</li><li>test2</li></ul><span>test</span></div>'
-    );
+    test('<div class=test>test<ul><li>test1<li>test2</ul><span>test</span></div>', '<div class="test">test<ul><li>test1</li><li>test2</li></ul><span>test</span></div>');
   });
 
   it('should ignore doctypes', () => {
-    test(
-      '<!doctype html><div>test</div>',
-      '<div>test</div>'
-    );
+    test('<!doctype html><div>test</div>', '<div>test</div>');
   });
 
   it('should ignore comments', () => {
@@ -61,7 +59,6 @@ describe('Integration tests: ', () => {
   });
 
   it('should handle inline styles', () => {
-
     // react 16 drops trailing semi commas from inline styles so we have to test for both
     const trailingSemiComma = reactVersion === 15 ? ';' : '';
 
@@ -87,58 +84,41 @@ describe('Integration tests: ', () => {
   });
 
   it('should not decode html entities when the option is disabled', () => {
-    test(
-      '<span>&excl;</span>',
-      '<span>&amp;excl;</span>',
-      {
-        decodeEntities: false
-      }
-    );
+    test('<span>&excl;</span>', '<span>&amp;excl;</span>', {
+      decodeEntities: false,
+    });
   });
 
   describe('transform function', () => {
-
     it('should use the response when it is not undefined', () => {
-      test(
-        '<span>test</span><div>another</div>',
-        '<p>transformed</p><p>transformed</p>',
-        {
-          transform(node, index) {
-            return <p key={index}>transformed</p>;
-          }
-        }
-      );
+      test('<span>test</span><div>another</div>', '<p>transformed</p><p>transformed</p>', {
+        transform(node, index) {
+          return <p key={index}>transformed</p>;
+        },
+      });
     });
 
     it('should not render elements and children when returning null', () => {
-      test(
-        '<p>test<span>inner test<b>bold child</b></span></p>',
-        '<p>test</p>',
-        {
-          transform(node) {
-            if (node.type === 'tag' && node.name === 'span') {
-              return null;
-            }
+      test('<p>test<span>inner test<b>bold child</b></span></p>', '<p>test</p>', {
+        transform(node) {
+          if (node.type === 'tag' && node.name === 'span') {
+            return null;
           }
-        }
-      );
+        },
+      });
     });
 
     it('should allow modifying nodes', () => {
-      test(
-        '<a href="/test">test link</a>',
-        '<a href="/changed">test link</a>',
-        {
-          transform(node, index) {
-            node.attribs.href = '/changed';
-            return convertNodeToElement(node, index);
-          }
-        }
-      );
+      test('<a href="/test">test link</a>', '<a href="/changed">test link</a>', {
+        transform(node, index) {
+          node.attribs.href = '/changed';
+          return convertNodeToElement(node, index);
+        },
+      });
     });
 
     it('should allow passing the transform function down to children', () => {
-      const transform = function(node, index) {
+      const transform = function (node, index) {
         if (node.type === 'tag') {
           if (node.name === 'ul') {
             node.attribs.class = 'test';
@@ -149,48 +129,29 @@ describe('Integration tests: ', () => {
           return node.data.replace(/list/, 'changed');
         }
       };
-      test(
-        '<ul><li>list 1</li><li>list 2</li></ul>',
-        '<ul class="test"><li>changed 1</li><li>changed 2</li></ul>',
-        {
-          transform
-        }
-      );
+      test('<ul><li>list 1</li><li>list 2</li></ul>', '<ul class="test"><li>changed 1</li><li>changed 2</li></ul>', {
+        transform,
+      });
     });
-
   });
 
   it('should not render invalid tags', () => {
-    test(
-      '<div>test<test</div>',
-      '<div>test</div>'
-    );
+    test('<div>test<test</div>', '<div>test</div>');
   });
 
   it('should not render invalid attributes', () => {
-    test(
-      '<div test<="test" class="test">content</div>',
-      '<div class="test">content</div>'
-    );
+    test('<div test<="test" class="test">content</div>', '<div class="test">content</div>');
   });
 
   it('should preprocess nodes correctly', () => {
-    test(
-      '<div>preprocess test</div>',
-      '<div>preprocess test</div><div>preprocess test</div>',
-      {
-        preprocessNodes(nodes) {
-          return [
-            ...nodes,
-            ...nodes
-          ];
-        }
-      }
-    );
+    test('<div>preprocess test</div>', '<div>preprocess test</div><div>preprocess test</div>', {
+      preprocessNodes(nodes) {
+        return [...nodes, ...nodes];
+      },
+    });
   });
 
   it('should expose htmlparser2', () => {
     expect(htmlparser2).toBeDefined();
   });
-
 });

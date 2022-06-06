@@ -6,7 +6,7 @@ import { Attributes } from '../interfaces';
  * @param {string} inlineStyle='' The inline style to convert
  * @returns {Attributes} The converted style
  */
-const InlineStyleToObject = (inlineStyle: string = ''): Attributes => {
+const InlineStyleToObject = (inlineStyle = ''): Attributes => {
   // just return empty object if the inlineStyle is empty
   if (inlineStyle === '') {
     return {};

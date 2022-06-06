@@ -1,9 +1,8 @@
 import React from 'react';
 import 'sass/app';
-
-import Header from './Header';
 import Editor from '../containers/Editor';
 import Html from '../containers/Html';
+import Header from './Header';
 
 export default function App() {
   return (

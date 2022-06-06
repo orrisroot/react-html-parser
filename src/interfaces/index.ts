@@ -12,7 +12,7 @@ export interface Props {
 }
 
 export interface Transform {
-  (node: Node, index: number, transform?: Transform): React.ReactNode;
+  (node: Node, index: number | string, transform?: Transform): React.ReactNode;
 }
 
 export interface Options {
