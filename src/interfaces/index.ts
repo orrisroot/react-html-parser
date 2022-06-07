@@ -1,7 +1,7 @@
-import { Element, Node, Text } from 'domhandler';
+import { Element as DomElement, Node as DomNode, Text as DomText } from 'domhandler';
 import React from 'react';
 
-export { Element, Node, Text };
+export { DomElement, DomNode, DomText };
 
 export interface Attributes {
   [key: string]: string;
@@ -12,15 +12,15 @@ export interface Props {
 }
 
 export interface Transform {
-  (node: Node, index: number | string, transform?: Transform): React.ReactNode;
+  (node: DomNode, index: number | string, transform?: Transform): React.ReactNode;
 }
 
 export interface Options {
   decodeEntities?: boolean;
   transform?: Transform;
-  preprocessNodes?(nodes: Node[]): Node[];
+  preprocessNodes?(nodes: DomNode[]): DomNode[];
 }
 
 export interface ElementTypeFuncion {
-  (node: Node, index?: number | string, transform?: Transform): React.ReactNode;
+  (node: DomNode, index?: number | string, transform?: Transform): React.ReactNode;
 }

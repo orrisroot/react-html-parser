@@ -1,6 +1,6 @@
 import React from 'react';
-import VoidElements, {VoidElement} from '../dom/elements/VoidElements';
-import { Element, ElementTypeFuncion, Node, Transform } from '../interfaces';
+import VoidElements, { VoidElement } from '../dom/elements/VoidElements';
+import { DomElement, DomNode, ElementTypeFuncion, Transform } from '../interfaces';
 import processNodes from '../processNodes';
 import generatePropsFromAttributes from '../utils/generatePropsFromAttributes';
 import isValidTagOrAttributeName from '../utils/isValidTagOrAttributeName';
@@ -8,13 +8,13 @@ import isValidTagOrAttributeName from '../utils/isValidTagOrAttributeName';
 /**
  * Converts any element (excluding style - see StyleElementType - and script) to a react element.
  *
- * @param {Node} node The tag node
+ * @param {DomNode} node The tag node
  * @param {number | string} index The index of the React element relative to it's parent
  * @param {Transform} transform The transform function to apply to all children
  * @returns {React.Element} The React tag element
  */
-const TagElementType: ElementTypeFuncion = (node: Node, index?: number | string, transform?: Transform): React.ReactNode => {
-  const node_ = node as Element;
+const TagElementType: ElementTypeFuncion = (node: DomNode, index?: number | string, transform?: Transform): React.ReactNode => {
+  const node_ = node as DomElement;
 
   const tagName = node_.name;
 

@@ -1,6 +1,6 @@
 import * as htmlparser2 from 'htmlparser2';
 import React from 'react';
-import { Node, Options } from './interfaces';
+import { DomNode, Options } from './interfaces';
 import processNodes from './processNodes';
 
 /**
@@ -13,7 +13,7 @@ import processNodes from './processNodes';
 const HtmlParser = (html: string, options?: Options): React.ReactNode[] => {
   const decodeEntities = options?.decodeEntities ?? true;
   const transform = options?.transform;
-  const defaultPreprocessNodes = (nodes: Node[]) => nodes;
+  const defaultPreprocessNodes = (nodes: DomNode[]) => nodes;
   const preprocessNodes = options?.preprocessNodes ?? defaultPreprocessNodes;
   const nodes = preprocessNodes(htmlparser2.parseDOM(html, { decodeEntities }));
   return processNodes(nodes, transform);

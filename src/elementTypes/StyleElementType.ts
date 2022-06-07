@@ -1,22 +1,22 @@
 import React from 'react';
-import { Element, ElementTypeFuncion, Node, Text } from '../interfaces';
+import { DomElement, DomNode, DomText, ElementTypeFuncion } from '../interfaces';
 import generatePropsFromAttributes from '../utils/generatePropsFromAttributes';
 
 /**
  * Converts a <style> element to a React element
  *
- * @param {Node} node The style node
+ * @param {DomNode} node The style node
  * @param {number | string} index The index of the React element relative to it's parent
- * @returns {RReact.ReactNode} The React style element
+ * @returns {React.ReactNode} The React style element
  */
-const StyleElementType: ElementTypeFuncion = (node: Node, index?: number | string): React.ReactNode => {
-  const node_ = node as Element;
+const StyleElementType: ElementTypeFuncion = (node: DomNode, index?: number | string): React.ReactNode => {
+  const node_ = node as DomElement;
 
   // The style element only ever has a single child which is the styles so try and find this to add as
   // a child to the style element that will be created
   let styles;
   if (node_.children.length > 0) {
-    styles = (node_.children[0] as Text).data;
+    styles = (node_.children[0] as DomText).data;
   }
 
   // generate props

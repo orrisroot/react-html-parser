@@ -2,6 +2,7 @@ import * as htmlparser2 from 'htmlparser2';
 import HtmlParser from './HtmlParser';
 
 export { default as convertNodeToElement } from './convertNodeToElement';
+export type { DomElement, DomNode, DomText, Options, Transform } from './interfaces';
 export { default as processNodes } from './processNodes';
 // expose htmlparser2 so it can be used if required
 export { htmlparser2 };
