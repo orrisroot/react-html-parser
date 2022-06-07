@@ -12,16 +12,16 @@ This library has been forked from [react-html-parser](https://github.com/peterne
 ## Install
 
 ```bash
-npm install react-html-parser
+npm install @orrisroot/react-html-parser
 # or
-yarn add react-html-parser
+yarn add @orrisroot/react-html-parser
 ```
 
 ## Usage
 
 ```javascript
 import React from 'react';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from '@orrisroot/react-html-parser';
 
 class HtmlComponent extends React.Component {
   render() {
@@ -56,7 +56,7 @@ Takes an HTML string and returns equivalent React elements
 
 #### Usage
 ```js
-import ReactHtmlParser from 'react-html-parser';
+import ReactHtmlParser from '@orrisroot/react-html-parser';
 ```
 #### Arguments
 - `html`: The HTML string to parse
@@ -120,7 +120,7 @@ Processes a node and returns the React element to be rendered. This function can
 
 #### Usage
 ```js
-import { convertNodeToElement } from 'react-html-parser';
+import { convertNodeToElement } from '@orrisroot/react-html-parser';
 ```
 #### Arguments
 - `node`: The node to process
@@ -128,7 +128,7 @@ import { convertNodeToElement } from 'react-html-parser';
 - `transform`: The transform function as described above
 
 ```js
-import { convertNodeToElement } from 'react-html-parser';
+import { convertNodeToElement } from '@orrisroot/react-html-parser';
 function transform(node, index) {
   // convert <ul> to <ol>
   if (node.type === 'tag' && node.name === 'ul') {
