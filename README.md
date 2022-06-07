@@ -2,13 +2,12 @@
 
 A utility for converting HTML strings into [React](https://facebook.github.io/react/) components. Converts standard HTML elements, attributes and inline styles into their React equivalents and provides a simple way to modify and replace the content.
 
-[Try the Live Demo](https://wrakky.github.io/react-html-parser)
+This library has been forked from [react-html-parser](https://github.com/peternewnham/react-html-parser) and rebranded to [@orrisroot/react-html-parser](https://github.com/orrisroot/react-html-parser) for continued maintenance.
 
-[![Travis branch](https://img.shields.io/travis/wrakky/react-html-parser/master.svg)](https://travis-ci.org/wrakky/react-html-parser)
-[![Coveralls](https://img.shields.io/coveralls/wrakky/react-html-parser.svg)](https://coveralls.io/github/wrakky/react-html-parser)
-[![npm](https://img.shields.io/npm/v/react-html-parser.svg)](https://www.npmjs.com/package/react-html-parser)
-[![Downloads](https://img.shields.io/npm/dw/react-html-parser.svg)](https://www.npmjs.com/package/react-html-parser)
-[![David](https://img.shields.io/david/wrakky/react-html-parser.svg)](https://david-dm.org/wrakky/react-html-parser)
+[Try the Live Demo](https://orrisroot.github.io/react-html-parser)
+
+[![npm](https://img.shields.io/npm/v/@orrisroot/react-html-parser.svg)](https://www.npmjs.com/package/@orrisroot/react-html-parser)
+[![Downloads](https://img.shields.io/npm/dw/@orrisroot/react-html-parser.svg)](https://www.npmjs.com/package/@orrisroot/react-html-parser)
 
 ## Install
 

@@ -22,7 +22,7 @@ module.exports = {
     ],
     extensions: ['.js', '.scss'],
     alias: {
-      'react-html-parser': path.resolve(path.join('..', 'lib'))
+      '@orrisroot/react-html-parser': path.resolve(path.join('..', 'lib'))
     }
   },
   plugins: [

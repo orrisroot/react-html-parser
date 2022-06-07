@@ -1,6 +1,6 @@
 {
   "name": "react-html-parser-demo",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Demo for the React HTML Parser library",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Peter Newnham",
+  "contributers": [
+    "Yoshihiro Okumura"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.2",

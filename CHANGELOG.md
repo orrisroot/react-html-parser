@@ -1,5 +1,16 @@
 # Change Log
 
+## v2.1.0
+### News
+- This package has been forked from [react-html-parser](https://www.npmjs.com/package/react-html-parser)
+npm package. The new package name is [@orrisroot/react-html-parser](https://www.npmjs.com/package/@orrisroot/react-html-parser)
+### Updates
+- Rewrited library in typescript
+- Updated the build environment
+- Updated the depending `htmlparser2` library version to `^8.0.1`
+- Updated the peer depending React version from v16 to v18
+- Updated the demo site to React v18
+
 ## v2.0.2
 ### Bug Fixes
 - Fix empty inline style attribute breaking rendering [#34](https://github.com/wrakky/react-html-parser/pull/34) ([kevinzwhuang](https://github.com/kevinzwhuang))
