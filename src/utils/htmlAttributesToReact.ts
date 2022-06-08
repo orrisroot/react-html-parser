@@ -1,4 +1,5 @@
 import BooleanAttributes from '../dom/attributes/BooleanAttributes';
+import EventAttributes from '../dom/attributes/EventAttributes';
 import ReactAttributes, { ReactAttribute } from '../dom/attributes/ReactAttributes';
 import { Attributes } from '../interfaces';
 import isValidTagOrAttributeName from './isValidTagOrAttributeName';
@@ -31,6 +32,7 @@ const getParsedAttributeValue = (attribute: string, value: string): string => {
 const htmlAttributesToReact = (attributes: Attributes): Attributes => {
   return Object.keys(attributes)
     .filter((attr) => isValidTagOrAttributeName(attr))
+    .filter((attr) => !(EventAttributes as ReadonlyArray<string>).includes(attr))
     .reduce((mappedAttributes: Attributes, attribute) => {
       // lowercase the attribute name and find it in the react attribute map
       const lowerCaseAttribute = attribute.toLowerCase();

@@ -1,5 +1,9 @@
 # Change Log
 
+## v2.1.1
+### Updates
+- Explicitly removed event attributes during conversion
+
 ## v2.1.0
 ### News
 - This package has been forked from [react-html-parser](https://www.npmjs.com/package/react-html-parser)
