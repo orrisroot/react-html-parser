@@ -1,4 +1,4 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const common = require('./webpack.common');
 const { merge } = require('webpack-merge');
@@ -11,41 +11,40 @@ module.exports = merge(common, {
       {
         test: /\.[jt]sx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
       {
-        test:   /\.scss$/,
-        include: [
-          path.join(__dirname, 'src', 'sass')
-        ],
+        test: /\.scss$/,
+        include: [path.join(__dirname, 'src', 'sass')],
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          { loader: 'postcss-loader',
+          {
+            loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [["autoprefixer", { grid: true }]],
-              }
+                plugins: [['autoprefixer', { grid: true }]],
+              },
             },
           },
-          'sass-loader'
-        ]
-      }
-    ]
+          'sass-loader',
+        ],
+      },
+    ],
   },
   optimization: {
     minimizer: [
       new TerserPlugin({
         extractComments: false,
         terserOptions: {
-          compress: {drop_console: true}
-        }
-      })
+          compress: { drop_console: true },
+        },
+      }),
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'demo.css'
-    })
-  ]
+      filename: 'demo.css',
+    }),
+  ],
 });

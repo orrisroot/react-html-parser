@@ -4,7 +4,6 @@ import { convertNodeToElement } from '@orrisroot/react-html-parser';
 export default {
   decodeEntities: true,
   transform: function transform(node, index) {
-
     // return null to block certain elements
     // don't allow <span> elements
     if (node.type === 'tag' && node.name === 'span') {
@@ -29,6 +28,5 @@ export default {
       node.attribs.target = '_blank';
       return convertNodeToElement(node, index, transform);
     }
-
-  }
+  },
 };

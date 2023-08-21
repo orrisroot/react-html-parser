@@ -6,7 +6,7 @@ const initialState = {
   html: data[initialExample].html,
   examples: [
     { value: 'simple', label: 'Simple Example' },
-    { value: 'entities', label: 'Don\'t Decode HTML Entities' },
+    { value: 'entities', label: "Don't Decode HTML Entities" },
     { value: 'transform', label: 'Transform' },
   ],
   selectedExample: initialExample,

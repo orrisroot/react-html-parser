@@ -7,18 +7,18 @@ const reactProperties = require('react-dom/lib/HTMLDOMPropertyConfig').Propertie
 
 const changes = {};
 
-const currentKeys = Object.keys(currentProperties).map(key => currentProperties[key]);
+const currentKeys = Object.keys(currentProperties).map((key) => currentProperties[key]);
 const reactKeys = Object.keys(reactProperties);
 
 // attributes that have been added to react
-reactKeys.forEach(key => {
+reactKeys.forEach((key) => {
   if (currentKeys.indexOf(key) === -1) {
     changes[key] = 'add';
   }
 });
 
 // attributes that have been removed from react
-currentKeys.forEach(key => {
+currentKeys.forEach((key) => {
   if (reactKeys.indexOf(key) === -1) {
     changes[key] = 'remove';
   }

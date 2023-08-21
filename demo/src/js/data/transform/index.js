@@ -5,5 +5,5 @@ import display from './display.txt';
 export default {
   html,
   options,
-  display
+  display,
 };

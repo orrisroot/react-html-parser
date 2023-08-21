@@ -5,5 +5,5 @@ import transform from './transform/index';
 export default {
   simple,
   entities,
-  transform
+  transform,
 };

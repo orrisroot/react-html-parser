@@ -1,3 +1,3 @@
 export default {
-  decodeEntities: false
+  decodeEntities: false,
 };

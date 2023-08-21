@@ -13,7 +13,11 @@ import isValidTagOrAttributeName from '../utils/isValidTagOrAttributeName';
  * @param {Transform} transform The transform function to apply to all children
  * @returns {React.Element} The React tag element
  */
-const TagElementType: ElementTypeFuncion = (node: DomNode, index?: number | string, transform?: Transform): React.ReactNode => {
+const TagElementType: ElementTypeFuncion = (
+  node: DomNode,
+  index?: number | string,
+  transform?: Transform
+): React.ReactNode => {
   const node_ = node as DomElement;
 
   const tagName = node_.name;

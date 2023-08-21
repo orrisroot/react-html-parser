@@ -1,7 +1,6 @@
 import inlineStyleToObject from 'utils/inlineStyleToObject';
 
 describe('Testing `utils/inlineStyleToObject', () => {
-
   it('should return an empty object if the inline style is empty', () => {
     expect(inlineStyleToObject()).toEqual({});
     expect(inlineStyleToObject('')).toEqual({});
@@ -11,7 +10,7 @@ describe('Testing `utils/inlineStyleToObject', () => {
     const inlineStyle = 'text-decoration:none;-webkit-border-radius:5px;';
     const expectedStyleObject = {
       textDecoration: 'none',
-      'WebkitBorderRadius': '5px'
+      WebkitBorderRadius: '5px',
     };
     expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
@@ -20,7 +19,7 @@ describe('Testing `utils/inlineStyleToObject', () => {
     const inlineStyle = 'font-color:red;invalid;color:blue;';
     const expectedStyleObject = {
       fontColor: 'red',
-      color: 'blue'
+      color: 'blue',
     };
     expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
@@ -28,7 +27,7 @@ describe('Testing `utils/inlineStyleToObject', () => {
   it('should not upper case the beginning `m` when using the `-ms-` vendor prefix', () => {
     const inlineStyle = '-ms-border-radius:10px';
     const expectedStyleObject = {
-      'msBorderRadius': '10px'
+      msBorderRadius: '10px',
     };
     expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
@@ -37,7 +36,7 @@ describe('Testing `utils/inlineStyleToObject', () => {
     const inlineStyle = 'background:url(https://test.com/image.png);color:white;';
     const expectedStyleObject = {
       background: 'url(https://test.com/image.png)',
-      color: 'white'
+      color: 'white',
     };
     expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
@@ -49,5 +48,4 @@ describe('Testing `utils/inlineStyleToObject', () => {
     };
     expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
-
 });

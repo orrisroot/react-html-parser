@@ -33,5 +33,5 @@ const BooleanAttributes = [
   'itemscope',
 ] as const;
 
-export type BooleanAttribute = typeof BooleanAttributes[number];
+export type BooleanAttribute = (typeof BooleanAttributes)[number];
 export default BooleanAttributes;

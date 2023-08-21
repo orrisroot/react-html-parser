@@ -1,7 +1,6 @@
 import isValidTagOrAttributeName from 'utils/isValidTagOrAttributeName';
 
 describe('Testing `utils/isValidTagOrAttributeName`', () => {
-
   it('valid names must start with a letter', () => {
     expect(isValidTagOrAttributeName('1')).toBe(false);
     expect(isValidTagOrAttributeName(':')).toBe(false);
@@ -36,5 +35,4 @@ describe('Testing `utils/isValidTagOrAttributeName`', () => {
     expect(isValidTagOrAttributeName('a!b')).toBe(false);
     expect(isValidTagOrAttributeName('a/b')).toBe(false);
   });
-
 });

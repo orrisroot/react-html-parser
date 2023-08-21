@@ -186,5 +186,5 @@ const EventAttributes = [
   'onwheel',
 ] as const;
 
-export type EventAttribute = typeof EventAttributes[number];
+export type EventAttribute = (typeof EventAttributes)[number];
 export default EventAttributes;

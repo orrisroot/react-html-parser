@@ -1,29 +1,27 @@
 const ElementTypes = {
   text: jasmine.createSpy('text'),
   type1: jasmine.createSpy('type1').and.returnValue('type1'),
-  type2: jasmine.createSpy('type2').and.returnValue('type2')
+  type2: jasmine.createSpy('type2').and.returnValue('type2'),
 };
 
 const convertNodeToElement = require('@orrisroot/inject-loader!convertNodeToElement')({
-  './elementTypes': ElementTypes
+  './elementTypes': ElementTypes,
 }).default;
 
 describe('Testing `convertNodeToElement`', () => {
-
   let transform;
   beforeEach(() => {
-    Object.keys(ElementTypes).forEach(type => {
+    Object.keys(ElementTypes).forEach((type) => {
       ElementTypes[type].calls.reset();
     });
-    transform = function() {};
+    transform = function () {};
   });
 
   it('should convert each node to the correct element type', () => {
-
     const nodes = [
-      { type:'type1', data:'type1 1' },
-      { type:'type2', data:'type2 1' },
-      { type:'type1', data:'type1 2' }
+      { type: 'type1', data: 'type1 1' },
+      { type: 'type2', data: 'type2 1' },
+      { type: 'type1', data: 'type1 2' },
     ];
 
     const node1 = convertNodeToElement(nodes[0], 0, transform);
@@ -41,7 +39,5 @@ describe('Testing `convertNodeToElement`', () => {
 
     expect(ElementTypes.type2.calls.count()).toBe(1);
     expect(ElementTypes.type2.calls.argsFor(0)).toEqual([nodes[1], 1, transform]);
-
   });
-
 });

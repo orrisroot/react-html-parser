@@ -9,7 +9,10 @@ import generatePropsFromAttributes from '../utils/generatePropsFromAttributes';
  * @param {number | string} index The index of the React element relative to it's parent
  * @returns {React.ReactNode} The React style element
  */
-const StyleElementType: ElementTypeFuncion = (node: DomNode, index?: number | string): React.ReactNode => {
+const StyleElementType: ElementTypeFuncion = (
+  node: DomNode,
+  index?: number | string
+): React.ReactNode => {
   const node_ = node as DomElement;
 
   // The style element only ever has a single child which is the styles so try and find this to add as

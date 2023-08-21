@@ -3,5 +3,5 @@ import options from './options';
 
 export default {
   html,
-  options
+  options,
 };

@@ -5,6 +5,6 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'eval-source-map',
   output: {
-    filename: 'react-html-parser.js'
-  }
+    filename: 'react-html-parser.js',
+  },
 });

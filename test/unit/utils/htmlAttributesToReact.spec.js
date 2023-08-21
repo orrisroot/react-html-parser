@@ -3,18 +3,16 @@ const realOne = require('../../../src/utils/isValidTagOrAttributeName');
 const isValidTagOrAttributeName = jasmine.createSpy('isValidTagOrAttributeName');
 
 const htmlAttributesToReact = require('@orrisroot/inject-loader!utils/htmlAttributesToReact')({
-  './isValidTagOrAttributeName': isValidTagOrAttributeName
+  './isValidTagOrAttributeName': isValidTagOrAttributeName,
 }).default;
 
 describe('Testing `utils/htmlAttributesToReact`', () => {
-
   beforeEach(() => {
     isValidTagOrAttributeName.calls.reset();
     isValidTagOrAttributeName.and.returnValue(true);
   });
 
   it('should return an object of react html attributes from an object of standard html attributes', () => {
-
     const htmlAttributes = {
       // class and for have special mappings
       class: 'testClass',
@@ -34,7 +32,7 @@ describe('Testing `utils/htmlAttributesToReact`', () => {
       // boolean attributes
       disabled: '',
       checked: '',
-      autoplay: ''
+      autoplay: '',
     };
 
     const expectedReactAttributes = {
@@ -50,21 +48,20 @@ describe('Testing `utils/htmlAttributesToReact`', () => {
       'upper-case-test-attribute': 'upperTestAttribute',
       disabled: 'disabled',
       checked: 'checked',
-      autoPlay: 'autoPlay'
+      autoPlay: 'autoPlay',
     };
 
     expect(htmlAttributesToReact(htmlAttributes)).toEqual(expectedReactAttributes);
-
   });
 
   it('should filter out invalid attributes', () => {
-    isValidTagOrAttributeName.and.callFake(attribute => {
+    isValidTagOrAttributeName.and.callFake((attribute) => {
       return attribute === 'attribute1' || attribute === 'attribute3';
     });
     const validKeys = htmlAttributesToReact({
       attribute1: '',
       attribute2: '',
-      attribute3: ''
+      attribute3: '',
     });
     expect(Object.keys(validKeys)).toEqual(['attribute1', 'attribute3']);
   });
@@ -74,7 +71,7 @@ describe('Testing `utils/htmlAttributesToReact`', () => {
 
     const validKeys = htmlAttributesToReact({
       constructor: '',
-      extends: ''
+      extends: '',
     });
 
     expect(Object.keys(validKeys)).toEqual(['extends']);

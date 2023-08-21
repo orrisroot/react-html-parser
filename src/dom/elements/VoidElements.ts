@@ -22,5 +22,5 @@ const VoidElements = [
   'wbr',
 ] as const;
 
-export type VoidElement = typeof VoidElements[number];
+export type VoidElement = (typeof VoidElements)[number];
 export default VoidElements;

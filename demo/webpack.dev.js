@@ -9,7 +9,7 @@ module.exports = merge(common, {
     host: '0.0.0.0',
     port: 3000,
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   devtool: 'eval-cheap-module-source-map',
   module: {
@@ -21,18 +21,14 @@ module.exports = merge(common, {
           {
             loader: 'babel-loader',
             options: {
-              plugins: [
-                'react-refresh/babel'
-              ],
+              plugins: ['react-refresh/babel'],
             },
           },
         ],
       },
       {
-        test:   /\.scss$/,
-        include: [
-          path.join(__dirname, 'src', 'sass')
-        ],
+        test: /\.scss$/,
+        include: [path.join(__dirname, 'src', 'sass')],
         use: [
           'style-loader',
           'css-loader',
@@ -40,16 +36,14 @@ module.exports = merge(common, {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [["autoprefixer", { grid: true }]],
-              }
+                plugins: [['autoprefixer', { grid: true }]],
+              },
             },
           },
-          'sass-loader'
-        ]
-      }
-    ]
+          'sass-loader',
+        ],
+      },
+    ],
   },
-  plugins: [
-    new ReactRefreshWebpackPlugin()
-  ]
+  plugins: [new ReactRefreshWebpackPlugin()],
 });

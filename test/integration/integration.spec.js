@@ -16,7 +16,9 @@ HtmlParserComponent.propTypes = {
 };
 
 const test = function (html, override = null, options = {}) {
-  const actual = ReactDOMServer.renderToStaticMarkup(<HtmlParserComponent html={html} options={options} />);
+  const actual = ReactDOMServer.renderToStaticMarkup(
+    <HtmlParserComponent html={html} options={options} />
+  );
   const expected = `<div>${(override === null && html) || override}</div>`;
   expect(actual).toBe(expected);
 };
@@ -35,7 +37,10 @@ describe('Integration tests: ', () => {
   });
 
   it('should handle bad html', () => {
-    test('<div class=test>test<ul><li>test1<li>test2</ul><span>test</span></div>', '<div class="test">test<ul><li>test1</li><li>test2</li></ul><span>test</span></div>');
+    test(
+      '<div class=test>test<ul><li>test1<li>test2</ul><span>test</span></div>',
+      '<div class="test">test<ul><li>test1</li><li>test2</li></ul><span>test</span></div>'
+    );
   });
 
   it('should ignore doctypes', () => {
@@ -129,9 +134,13 @@ describe('Integration tests: ', () => {
           return node.data.replace(/list/, 'changed');
         }
       };
-      test('<ul><li>list 1</li><li>list 2</li></ul>', '<ul class="test"><li>changed 1</li><li>changed 2</li></ul>', {
-        transform,
-      });
+      test(
+        '<ul><li>list 1</li><li>list 2</li></ul>',
+        '<ul class="test"><li>changed 1</li><li>changed 2</li></ul>',
+        {
+          transform,
+        }
+      );
     });
   });
 

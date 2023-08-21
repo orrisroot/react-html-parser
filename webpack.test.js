@@ -12,17 +12,15 @@ const webpackConfig = merge(dev, {
           {
             loader: 'babel-loader',
             options: {
-              plugins: [
-                'babel-plugin-istanbul'
-              ],
+              plugins: ['babel-plugin-istanbul'],
               presets: [['@babel/preset-env', { modules: 'cjs' }]],
             },
           },
         ],
         include: path.join(__dirname, 'src'),
-      }
-    ]
-  }
+      },
+    ],
+  },
 });
 delete webpackConfig.externals;
 delete webpackConfig.output;

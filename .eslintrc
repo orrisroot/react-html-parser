@@ -1,13 +1,7 @@
 {
   "root": true,
-  "plugins": [
-    "react"
-  ],
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:react/recommended"
-  ],
+  "plugins": ["react"],
+  "extends": ["eslint:recommended", "plugin:react/jsx-runtime", "plugin:react/recommended"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
@@ -24,7 +18,7 @@
   "rules": {
     "semi": [2, "always"],
     "quotes": [2, "single"],
-    "indent": [2, 2, {"SwitchCase": 1}],
+    "indent": [2, 2, { "SwitchCase": 1 }],
     "eol-last": 2,
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1
@@ -40,14 +34,12 @@
       "parserOptions": {
         "project": "./tsconfig.eslint.json"
       },
-      "plugins": [
-         "@typescript-eslint"
-      ]
+      "plugins": ["@typescript-eslint"]
     }
   ],
   "settings": {
     "react": {
-       "version": "detect"
+      "version": "detect"
     }
   }
 }

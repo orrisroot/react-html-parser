@@ -8,28 +8,25 @@ module.exports = {
       {
         test: /\.[jt]sx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
-      }
-    ]
+        use: ['babel-loader'],
+      },
+    ],
   },
   resolve: {
-    modules: [
-      path.join(__dirname, 'src'),
-      'node_modules'
-    ],
-    extensions: ['.js', '.ts', '.jsx', '.tsx']
+    modules: [path.join(__dirname, 'src'), 'node_modules'],
+    extensions: ['.js', '.ts', '.jsx', '.tsx'],
   },
   output: {
     library: {
       name: 'ReactHtmlParser',
-      type: 'umd'
-    }
+      type: 'umd',
+    },
   },
   optimization: {
     chunkIds: 'total-size',
-    moduleIds: 'size'
+    moduleIds: 'size',
   },
   externals: {
-    react: 'React'
-  }
+    react: 'React',
+  },
 };

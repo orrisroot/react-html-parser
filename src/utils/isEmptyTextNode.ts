@@ -8,7 +8,11 @@ import { DomNode, DomText } from '../interfaces';
  * @returns {boolean} Whether the node is an empty text node
  */
 const isEmptyTextNode = (node: DomNode): boolean => {
-  return node.type === 'text' && /\r?\n/.test((node as DomText).data) && (node as DomText).data.trim() === '';
+  return (
+    node.type === 'text' &&
+    /\r?\n/.test((node as DomText).data) &&
+    (node as DomText).data.trim() === ''
+  );
 };
 
 export default isEmptyTextNode;
