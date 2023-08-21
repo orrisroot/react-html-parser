@@ -1,7 +1,7 @@
 const htmlAttributesToReact = jasmine.createSpy('htmlAttributesToReact');
 const inlineStyleToObject = jasmine.createSpy('inlineStyleToObject');
 
-const generatePropsFromAttributes = require('inject-loader!utils/generatePropsFromAttributes')({
+const generatePropsFromAttributes = require('@orrisroot/inject-loader!utils/generatePropsFromAttributes')({
   './htmlAttributesToReact': htmlAttributesToReact,
   './inlineStyleToObject': inlineStyleToObject
 }).default;

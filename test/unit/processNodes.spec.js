@@ -1,7 +1,7 @@
 const isEmptyTextNode = jasmine.createSpy('isEmptyTextNode');
 const convertNodeToElement = jasmine.createSpy('convertNodeToElement');
 
-const processNodes = require('inject-loader!processNodes')({
+const processNodes = require('@orrisroot/inject-loader!processNodes')({
   './utils/isEmptyTextNode': isEmptyTextNode,
   './convertNodeToElement': convertNodeToElement
 }).default;

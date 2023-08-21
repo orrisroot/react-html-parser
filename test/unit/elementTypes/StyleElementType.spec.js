@@ -4,7 +4,7 @@ const props = {
 };
 const generatePropsFromAttributes = jasmine.createSpy('generatePropsFromAttributes');
 
-const StyleElementType = require('inject-loader!elementTypes/StyleElementType')({
+const StyleElementType = require('@orrisroot/inject-loader!elementTypes/StyleElementType')({
   '../utils/generatePropsFromAttributes': generatePropsFromAttributes
 }).default;
 

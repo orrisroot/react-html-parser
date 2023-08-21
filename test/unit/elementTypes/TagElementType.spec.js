@@ -3,7 +3,7 @@ const processNodes = jasmine.createSpy('processNodes');
 const VoidElements = ['void'];
 const isValidTagOrAttributeName = jasmine.createSpy('isValidTagOrAttributeName');
 
-const TagElementType = require('inject-loader!elementTypes/TagElementType')({
+const TagElementType = require('@orrisroot/inject-loader!elementTypes/TagElementType')({
   '../utils/generatePropsFromAttributes': generatePropsFromAttributes,
   '../processNodes': processNodes,
   '../dom/elements/VoidElements': VoidElements,

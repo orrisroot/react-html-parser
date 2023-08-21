@@ -2,7 +2,7 @@ const realOne = require('../../../src/utils/isValidTagOrAttributeName');
 
 const isValidTagOrAttributeName = jasmine.createSpy('isValidTagOrAttributeName');
 
-const htmlAttributesToReact = require('inject-loader!utils/htmlAttributesToReact')({
+const htmlAttributesToReact = require('@orrisroot/inject-loader!utils/htmlAttributesToReact')({
   './isValidTagOrAttributeName': isValidTagOrAttributeName
 }).default;
 

@@ -2,7 +2,7 @@ const { merge } = require('webpack-merge');
 const dev = require('./webpack.dev');
 const path = require('path');
 
-webpackConfig = merge(dev, {
+const webpackConfig = merge(dev, {
   watch: true,
   module: {
     rules: [
@@ -13,13 +13,12 @@ webpackConfig = merge(dev, {
             loader: 'babel-loader',
             options: {
               plugins: [
-                '@babel/plugin-transform-modules-commonjs',
                 'babel-plugin-istanbul'
-              ]
+              ],
+              presets: [['@babel/preset-env', { modules: 'cjs' }]],
             },
           },
         ],
-        enforce: "pre",
         include: path.join(__dirname, 'src'),
       }
     ]
