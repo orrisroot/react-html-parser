@@ -1,0 +1,26 @@
+{
+  "version": "0.2",
+  "language": "en,en-gb",
+  "words": [
+    "attribs",
+    "domhandler",
+    "dompurify",
+    "formnovalidate",
+    "kevinzwhuang",
+    "lcov",
+    "noopener",
+    "noreferrer",
+    "pmmmwh",
+    "subdir",
+    "testattribute"
+  ],
+  "ignorePaths": [
+    "coverage",
+    "dist",
+    "lib",
+    "node_modules",
+    "package.json",
+    "package-lock.json",
+    "src/dom/attributes/*.ts"
+  ]
+}

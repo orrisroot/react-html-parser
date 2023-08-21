@@ -6,7 +6,7 @@
 
 import { ElementType } from 'htmlparser2';
 
-import type { ElementTypeFuncion } from '../interfaces';
+import type { ElementTypeFunction } from '../interfaces';
 
 import StyleElementType from './StyleElementType';
 import TagElementType from './TagElementType';
@@ -14,7 +14,7 @@ import TextElementType from './TextElementType';
 import UnsupportedElementType from './UnsupportedElementType';
 
 const ElementTypes: {
-  [key: string]: ElementTypeFuncion;
+  [key: string]: ElementTypeFunction;
 } = {
   [ElementType.Text]: TextElementType,
   [ElementType.Tag]: TagElementType,

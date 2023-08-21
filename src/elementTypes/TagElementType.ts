@@ -2,7 +2,7 @@ import React from 'react';
 
 import type { VoidElement } from '../dom/elements/VoidElements';
 import VoidElements from '../dom/elements/VoidElements';
-import type { DomElement, DomNode, ElementTypeFuncion, Transform } from '../interfaces';
+import type { DomElement, DomNode, ElementTypeFunction, Transform } from '../interfaces';
 import processNodes from '../processNodes';
 import generatePropsFromAttributes from '../utils/generatePropsFromAttributes';
 import isValidTagOrAttributeName from '../utils/isValidTagOrAttributeName';
@@ -15,7 +15,7 @@ import isValidTagOrAttributeName from '../utils/isValidTagOrAttributeName';
  * @param {Transform} transform The transform function to apply to all children
  * @returns {React.Element} The React tag element
  */
-const TagElementType: ElementTypeFuncion = (
+const TagElementType: ElementTypeFunction = (
   node: DomNode,
   index?: number | string,
   transform?: Transform

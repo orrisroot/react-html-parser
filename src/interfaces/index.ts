@@ -21,6 +21,6 @@ export interface Options {
   preprocessNodes?(nodes: DomNode[]): DomNode[];
 }
 
-export interface ElementTypeFuncion {
+export interface ElementTypeFunction {
   (node: DomNode, index?: number | string, transform?: Transform): React.ReactNode;
 }

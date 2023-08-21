@@ -6,7 +6,7 @@ describe('Testing `utils/inlineStyleToObject', () => {
     expect(inlineStyleToObject('')).toEqual({});
   });
 
-  it('should camelise each style whenever there is a hyphen', () => {
+  it('should camelize each style whenever there is a hyphen', () => {
     const inlineStyle = 'text-decoration:none;-webkit-border-radius:5px;';
     const expectedStyleObject = {
       textDecoration: 'none',

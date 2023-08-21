@@ -43,7 +43,7 @@ describe('Integration tests: ', () => {
     );
   });
 
-  it('should ignore doctypes', () => {
+  it('should ignore doctype', () => {
     test('<!doctype html><div>test</div>', '<div>test</div>');
   });
 

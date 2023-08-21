@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { DomElement, DomNode, DomText, ElementTypeFuncion } from '../interfaces';
+import type { DomElement, DomNode, DomText, ElementTypeFunction } from '../interfaces';
 import generatePropsFromAttributes from '../utils/generatePropsFromAttributes';
 
 /**
@@ -10,7 +10,7 @@ import generatePropsFromAttributes from '../utils/generatePropsFromAttributes';
  * @param {number | string} index The index of the React element relative to it's parent
  * @returns {React.ReactNode} The React style element
  */
-const StyleElementType: ElementTypeFuncion = (
+const StyleElementType: ElementTypeFunction = (
   node: DomNode,
   index?: number | string
 ): React.ReactNode => {

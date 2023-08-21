@@ -1,6 +1,6 @@
 import type React from 'react';
 
-import type { DomNode, DomText, ElementTypeFuncion } from '../interfaces';
+import type { DomNode, DomText, ElementTypeFunction } from '../interfaces';
 
 /**
  * Converts a text node to a React text element
@@ -8,7 +8,7 @@ import type { DomNode, DomText, ElementTypeFuncion } from '../interfaces';
  * @param {DomNode} node The text node
  * @returns {React.ReactNode} The text
  */
-const TextElementType: ElementTypeFuncion = (node: DomNode): React.ReactNode => {
+const TextElementType: ElementTypeFunction = (node: DomNode): React.ReactNode => {
   const node_ = node as DomText;
 
   // React will accept plain text for rendering so just return the node data
