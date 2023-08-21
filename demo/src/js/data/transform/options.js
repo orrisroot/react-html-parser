@@ -1,5 +1,5 @@
-import React from 'react';
 import { convertNodeToElement } from '@orrisroot/react-html-parser';
+import React from 'react';
 
 export default {
   decodeEntities: true,

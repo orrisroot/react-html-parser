@@ -1,6 +1,7 @@
+const puppeteer = require('puppeteer');
+
 const webpackConfig = require('./webpack.test');
 
-const puppeteer = require('puppeteer');
 process.env.CHROME_BIN = puppeteer.executablePath();
 
 module.exports = function (karma) {

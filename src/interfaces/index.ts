@@ -1,5 +1,5 @@
 import { Element as DomElement, Node as DomNode, Text as DomText } from 'domhandler';
-import React from 'react';
+import type React from 'react';
 
 export { DomElement, DomNode, DomText };
 

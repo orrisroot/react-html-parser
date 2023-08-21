@@ -1,4 +1,4 @@
-import { DomNode, DomText } from '../interfaces';
+import type { DomNode, DomText } from '../interfaces';
 
 /**
  * Tests a htmlparser2 node and returns whether is it a text node at the start and end of the line containing only

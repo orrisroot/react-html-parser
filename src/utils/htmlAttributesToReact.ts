@@ -1,7 +1,9 @@
 import BooleanAttributes from '../dom/attributes/BooleanAttributes';
 import EventAttributes from '../dom/attributes/EventAttributes';
-import ReactAttributes, { ReactAttribute } from '../dom/attributes/ReactAttributes';
-import { Attributes } from '../interfaces';
+import type { ReactAttribute } from '../dom/attributes/ReactAttributes';
+import ReactAttributes from '../dom/attributes/ReactAttributes';
+import type { Attributes } from '../interfaces';
+
 import isValidTagOrAttributeName from './isValidTagOrAttributeName';
 
 /**

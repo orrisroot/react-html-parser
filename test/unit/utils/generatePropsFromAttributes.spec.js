@@ -26,6 +26,7 @@ describe('Testing `utils/generatePropsFromAttributes`', () => {
       attr2: 'two',
       key: 'the-key',
     });
+
     expect(htmlAttributesToReact).toHaveBeenCalledWith(attributes);
   });
 
@@ -38,6 +39,7 @@ describe('Testing `utils/generatePropsFromAttributes`', () => {
       style: 'converted-style',
       key: 'style-key',
     });
+
     expect(inlineStyleToObject).toHaveBeenCalledWith('style');
   });
 
@@ -50,6 +52,7 @@ describe('Testing `utils/generatePropsFromAttributes`', () => {
       style: 'converted-style',
       key: 'style-key',
     });
+
     expect(inlineStyleToObject).toHaveBeenCalledWith('');
   });
 });

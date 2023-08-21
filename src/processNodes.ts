@@ -1,6 +1,7 @@
-import React from 'react';
+import type React from 'react';
+
 import convertNodeToElement from './convertNodeToElement';
-import { DomNode, Transform } from './interfaces';
+import type { DomNode, Transform } from './interfaces';
 import isEmptyTextNode from './utils/isEmptyTextNode';
 
 /**

@@ -5,7 +5,9 @@
  */
 
 import { ElementType } from 'htmlparser2';
-import { ElementTypeFuncion } from '../interfaces';
+
+import type { ElementTypeFuncion } from '../interfaces';
+
 import StyleElementType from './StyleElementType';
 import TagElementType from './TagElementType';
 import TextElementType from './TextElementType';

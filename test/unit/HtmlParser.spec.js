@@ -25,9 +25,11 @@ describe('Testing: `HtmlParser`', () => {
     const preprocessNodes = jasmine
       .createSpy('preprocessNodes')
       .and.callFake((v) => `preprocessed ${v}`);
+
     expect(HtmlParser('html', { decodeEntities: false, transform, preprocessNodes })).toBe(
       'processed'
     );
+
     expect(htmlparser2.parseDOM).toHaveBeenCalledWith('html', { decodeEntities: false });
     expect(processNodes).toHaveBeenCalledWith('preprocessed parsed', transform);
   });

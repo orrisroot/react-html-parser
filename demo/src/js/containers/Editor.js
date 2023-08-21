@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+
 import { setView, updateHtml, updateSelectedExample } from '../actions';
 import Editor from '../components/Editor';
 

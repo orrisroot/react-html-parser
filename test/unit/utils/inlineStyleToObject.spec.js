@@ -12,6 +12,7 @@ describe('Testing `utils/inlineStyleToObject', () => {
       textDecoration: 'none',
       WebkitBorderRadius: '5px',
     };
+
     expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
 
@@ -21,6 +22,7 @@ describe('Testing `utils/inlineStyleToObject', () => {
       fontColor: 'red',
       color: 'blue',
     };
+
     expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
 
@@ -29,6 +31,7 @@ describe('Testing `utils/inlineStyleToObject', () => {
     const expectedStyleObject = {
       msBorderRadius: '10px',
     };
+
     expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
 
@@ -38,6 +41,7 @@ describe('Testing `utils/inlineStyleToObject', () => {
       background: 'url(https://test.com/image.png)',
       color: 'white',
     };
+
     expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
 
@@ -46,6 +50,7 @@ describe('Testing `utils/inlineStyleToObject', () => {
     const expectedStyleObject = {
       background: 'url(https://test.com/IMAGE.png)',
     };
+
     expect(inlineStyleToObject(inlineStyle)).toEqual(expectedStyleObject);
   });
 });

@@ -1,4 +1,5 @@
-import { Attributes, Props } from '../interfaces';
+import type { Attributes, Props } from '../interfaces';
+
 import htmlAttributesToReact from './htmlAttributesToReact';
 import inlineStyleToObject from './inlineStyleToObject';
 

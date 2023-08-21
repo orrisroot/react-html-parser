@@ -1,0 +1,6 @@
+/dist
+/coverage
+/node_modules
+/lib
+/demo/dist
+/demo/node_modules

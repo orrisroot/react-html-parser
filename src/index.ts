@@ -1,4 +1,5 @@
 import * as htmlparser2 from 'htmlparser2';
+
 import HtmlParser from './HtmlParser';
 
 export { default as convertNodeToElement } from './convertNodeToElement';

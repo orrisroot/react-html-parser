@@ -1,6 +1,7 @@
 import * as htmlparser2 from 'htmlparser2';
-import React from 'react';
-import { DomNode, Options } from './interfaces';
+import type React from 'react';
+
+import type { DomNode, Options } from './interfaces';
 import processNodes from './processNodes';
 
 /**

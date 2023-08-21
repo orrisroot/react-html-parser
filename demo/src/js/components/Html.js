@@ -1,6 +1,7 @@
 import ReactHtmlParser from '@orrisroot/react-html-parser';
 import PropTypes from 'prop-types';
 import React from 'react';
+
 import 'sass/html';
 import data from '../data';
 

@@ -1,4 +1,4 @@
-import { ElementTypeFuncion } from '../interfaces';
+import type { ElementTypeFuncion } from '../interfaces';
 
 /**
  * Handles an unsupported element type by returning null so nothing is rendered

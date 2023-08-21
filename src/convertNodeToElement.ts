@@ -1,6 +1,7 @@
-import React from 'react';
+import type React from 'react';
+
 import ElementTypes from './elementTypes';
-import { DomNode, Transform } from './interfaces';
+import type { DomNode, Transform } from './interfaces';
 
 /**
  * Converts a htmlparser2 node to a React element

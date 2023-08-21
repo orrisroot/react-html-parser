@@ -1,6 +1,8 @@
 import React from 'react';
-import VoidElements, { VoidElement } from '../dom/elements/VoidElements';
-import { DomElement, DomNode, ElementTypeFuncion, Transform } from '../interfaces';
+
+import type { VoidElement } from '../dom/elements/VoidElements';
+import VoidElements from '../dom/elements/VoidElements';
+import type { DomElement, DomNode, ElementTypeFuncion, Transform } from '../interfaces';
 import processNodes from '../processNodes';
 import generatePropsFromAttributes from '../utils/generatePropsFromAttributes';
 import isValidTagOrAttributeName from '../utils/isValidTagOrAttributeName';

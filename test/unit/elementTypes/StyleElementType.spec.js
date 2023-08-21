@@ -19,6 +19,7 @@ describe('Testing `elementTypes/StyleElementType', () => {
       children: [{ data: 'style data' }],
     };
     const styleElement = StyleElementType(node, 'key');
+
     expect(styleElement.type).toBe('style');
     expect(styleElement.props).toEqual({
       prop1: 'value1',
@@ -32,6 +33,7 @@ describe('Testing `elementTypes/StyleElementType', () => {
       children: [],
     };
     const styleElement = StyleElementType(node, 'key');
+
     expect(styleElement.type).toBe('style');
     expect(styleElement.props).toEqual({
       prop1: 'value1',

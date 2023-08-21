@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+
 import Html from '../components/Html';
 
 const mapStateToProps = (state) => {

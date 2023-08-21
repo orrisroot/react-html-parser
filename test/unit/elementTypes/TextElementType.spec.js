@@ -5,6 +5,7 @@ describe('Testing `elementTypes/TextElementType', () => {
     const node = {
       data: 'test',
     };
+
     expect(TextElementType(node)).toBe('test');
   });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
-import { DomElement, DomNode, DomText, ElementTypeFuncion } from '../interfaces';
+
+import type { DomElement, DomNode, DomText, ElementTypeFuncion } from '../interfaces';
 import generatePropsFromAttributes from '../utils/generatePropsFromAttributes';
 
 /**

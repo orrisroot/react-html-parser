@@ -31,11 +31,13 @@ describe('Testing `elementTypes/TagElementType', () => {
       children: 'node 1 children',
     };
     const node1Element = TagElementType(node1, 'key', transform);
+
     expect(node1Element.type).toBe('h1');
     expect(node1Element.props).toEqual({
       id: 'test',
       children: 'children',
     });
+
     expect(processNodes).toHaveBeenCalledWith('node 1 children', transform);
     expect(generatePropsFromAttributes).toHaveBeenCalledWith(node1.attribs, 'key');
   });
@@ -50,6 +52,7 @@ describe('Testing `elementTypes/TagElementType', () => {
     };
 
     const voidElement = TagElementType(voidNode, 'key');
+
     expect(voidElement.type).toBe('void');
     expect(voidElement.props.children).toBe(null);
   });
@@ -59,6 +62,7 @@ describe('Testing `elementTypes/TagElementType', () => {
     const invalidNode = {
       name: 'invalid',
     };
+
     expect(TagElementType(invalidNode)).toBeNull();
   });
 });

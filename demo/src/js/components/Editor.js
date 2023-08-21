@@ -4,6 +4,7 @@ import 'brace/theme/chrome';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import AceEditor from 'react-ace';
+
 import 'sass/editor';
 import data from '../data';
 

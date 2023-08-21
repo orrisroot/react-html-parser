@@ -1,5 +1,6 @@
-import React from 'react';
-import { DomNode, DomText, ElementTypeFuncion } from '../interfaces';
+import type React from 'react';
+
+import type { DomNode, DomText, ElementTypeFuncion } from '../interfaces';
 
 /**
  * Converts a text node to a React text element

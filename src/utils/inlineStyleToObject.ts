@@ -1,4 +1,4 @@
-import { Attributes } from '../interfaces';
+import type { Attributes } from '../interfaces';
 
 /**
  * Converts an inline style string into an object of React style properties

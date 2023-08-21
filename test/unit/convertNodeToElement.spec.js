@@ -25,12 +25,15 @@ describe('Testing `convertNodeToElement`', () => {
     ];
 
     const node1 = convertNodeToElement(nodes[0], 0, transform);
+
     expect(node1).toBe('type1');
 
     const node2 = convertNodeToElement(nodes[1], 1, transform);
+
     expect(node2).toBe('type2');
 
     const node3 = convertNodeToElement(nodes[2], 2, transform);
+
     expect(node3).toBe('type1');
 
     expect(ElementTypes.type1.calls.count()).toBe(2);

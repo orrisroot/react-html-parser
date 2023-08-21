@@ -1,4 +1,3 @@
-const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
 module.exports = {
