@@ -16,7 +16,7 @@
     "lint:prettier": "prettier --check .",
     "lint:eslint": "eslint .",
     "lint:cspell": "cspell .",
-    "lint": "npm run lint:prettier && npm run lint:eslint",
+    "lint": "npm run lint:prettier && npm run lint:eslint && npm run lint:cspell",
     "fix:prettier": "npm run lint:prettier -- --write",
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix": "npm run fix:prettier && npm run fix:eslint",
