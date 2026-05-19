@@ -11,9 +11,11 @@ export interface Props {
   [key: string]: string | number | boolean | Props;
 }
 
-export interface Transform {
-  (node: DomNode, index: number | string, transform?: Transform): React.ReactNode;
-}
+export type Transform = (
+  node: DomNode,
+  index: number | string,
+  transform?: Transform,
+) => React.ReactNode;
 
 export interface Options {
   decodeEntities?: boolean;
@@ -21,6 +23,8 @@ export interface Options {
   preprocessNodes?(nodes: DomNode[]): DomNode[];
 }
 
-export interface ElementTypeFunction {
-  (node: DomNode, index?: number | string, transform?: Transform): React.ReactNode;
-}
+export type ElementTypeFunction = (
+  node: DomNode,
+  index?: number | string,
+  transform?: Transform,
+) => React.ReactNode;

@@ -12,7 +12,7 @@ import generatePropsFromAttributes from '../utils/generatePropsFromAttributes';
  */
 const StyleElementType: ElementTypeFunction = (
   node: DomNode,
-  index?: number | string
+  index?: number | string,
 ): React.ReactNode => {
   const node_ = node as DomElement;
 

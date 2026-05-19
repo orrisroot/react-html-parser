@@ -14,7 +14,7 @@ import type { DomNode, Transform } from './interfaces';
 const convertNodeToElement = (
   node: DomNode,
   index: number | string,
-  transform?: Transform
+  transform?: Transform,
 ): React.ReactNode => {
   return ElementTypes[node.type]?.(node, index, transform);
 };

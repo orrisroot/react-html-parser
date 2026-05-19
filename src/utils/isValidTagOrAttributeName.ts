@@ -7,7 +7,7 @@ const isValidTagOrAttributeName = (tagName: string) => {
     return false;
   }
 
-  if (!Object.prototype.hasOwnProperty.call(nameCache, tagName)) {
+  if (!Object.hasOwn(nameCache, tagName)) {
     nameCache[tagName] = VALID_TAG_REGEX.test(tagName);
   }
   return nameCache[tagName];

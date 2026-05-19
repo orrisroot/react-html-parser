@@ -18,7 +18,7 @@ const processNodes = (nodes: DomNode[], transform?: Transform): React.ReactNode[
       // return the result of the transform function if applicable
       if (typeof transform === 'function') {
         const transformed = transform(node, index);
-        if (transformed === null || !!transformed) {
+        if (transformed === null || transformed) {
           return transformed;
         }
       }

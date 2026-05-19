@@ -18,7 +18,7 @@ import isValidTagOrAttributeName from '../utils/isValidTagOrAttributeName';
 const TagElementType: ElementTypeFunction = (
   node: DomNode,
   index?: number | string,
-  transform?: Transform
+  transform?: Transform,
 ): React.ReactNode => {
   const node_ = node as DomElement;
 

@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "noEmit": false,
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "bundler",
+    "outDir": "./lib",
+    "rootDir": "./src",
+    "declaration": false,
+    "emitDeclarationOnly": false
+  },
+  "include": ["src"]
+}

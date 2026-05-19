@@ -16,7 +16,7 @@ const InlineStyleToObject = (inlineStyle = ''): Attributes => {
     // extract the style property name and value
     const [property, value] = stylePropertyValue
       .split(/^([^:]+):/)
-      .filter((val, i) => i > 0)
+      .filter((_val, i) => i > 0)
       .map((item) => item.trim());
 
     // if there is no value (i.e. no : in the style) then ignore it
