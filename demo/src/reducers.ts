@@ -1,8 +1,16 @@
-import data from './data';
+import { AppAction } from './actions';
+import data, { ExampleKey } from './data';
+
+export interface AppState {
+  html: string;
+  examples: Array<{ value: ExampleKey; label: string }>;
+  selectedExample: ExampleKey;
+  view: string;
+}
 
 const initialExample = 'simple';
 
-const initialState = {
+export const initialState: AppState = {
   html: data[initialExample].html,
   examples: [
     { value: 'simple', label: 'Simple Example' },
@@ -13,7 +21,7 @@ const initialState = {
   view: 'html',
 };
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state: AppState = initialState, action: AppAction): AppState {
   switch (action.type) {
     case 'UPDATE_HTML':
       return {
@@ -23,8 +31,8 @@ export default function reducer(state = initialState, action) {
     case 'UPDATE_SELECTED_EXAMPLE':
       return {
         ...state,
-        html: data[action.example].html,
-        selectedExample: action.example,
+        html: data[action.example as ExampleKey].html,
+        selectedExample: action.example as ExampleKey,
       };
     case 'SET_VIEW':
       return {

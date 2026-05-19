@@ -1,29 +1,42 @@
 import 'brace';
 import 'brace/mode/html';
 import 'brace/theme/chrome';
-import PropTypes from 'prop-types';
-import { Component } from 'react';
+import { Component, FormEvent, ChangeEvent } from 'react';
 import AceEditor from 'react-ace';
 
-import data from '../data';
+import data, { ExampleKey } from '../data';
 
-export default class Editor extends Component {
-  onEditorChange(html) {
+interface EditorProps {
+  html: string;
+  onUpdateHtml: (html: string) => void;
+  onUpdateExample: (example: ExampleKey) => void;
+  onSetView: (view: string) => void;
+  selectedExample: ExampleKey;
+  examples: Array<{ value: ExampleKey; label: string }>;
+  view: string;
+}
+
+interface EditorState {}
+
+export default class Editor extends Component<EditorProps, EditorState> {
+  onEditorChange(html: string) {
     this.props.onUpdateHtml(html);
   }
-  onEditorLoad(editor) {
+
+  onEditorLoad(editor: any) {
     editor.session.setUseWorker(false);
     editor.session.setUseWrapMode(true);
   }
-  onExampleChange(example) {
-    this.props.onUpdateExample(example);
+
+  onExampleChange(e: ChangeEvent<HTMLSelectElement>) {
+    this.props.onUpdateExample(e.target.value as ExampleKey);
   }
 
-  onViewChange(view) {
+  onViewChange(view: string) {
     this.props.onSetView(view);
   }
 
-  generateViewLinks(activeView) {
+  generateViewLinks(activeView: string) {
     const views = [
       { id: 'html', label: 'HTML' },
       { id: 'options', label: 'Options' },
@@ -36,7 +49,7 @@ export default class Editor extends Component {
         ) : (
           <a
             href="#"
-            onClick={(e) => {
+            onClick={(e: FormEvent) => {
               e.preventDefault();
               this.onViewChange(view.id);
             }}
@@ -48,11 +61,11 @@ export default class Editor extends Component {
     });
   }
 
-  generateEditor(view) {
+  generateEditor(view: string) {
     const editorProps = {
       $blockScrolling: Number.POSITIVE_INFINITY,
       wrap: true,
-    };
+    } as Record<string, unknown>;
 
     if (view === 'html') {
       const { html } = this.props;
@@ -64,8 +77,8 @@ export default class Editor extends Component {
           value={html}
           width="100%"
           height="auto"
-          onChange={(value) => this.onEditorChange(value)}
-          onLoad={(editor) => this.onEditorLoad(editor)}
+          onChange={(value: string) => this.onEditorChange(value)}
+          onLoad={(editor: any) => this.onEditorLoad(editor)}
           editorProps={editorProps}
         />
       );
@@ -83,7 +96,7 @@ export default class Editor extends Component {
           width="100%"
           height="auto"
           readOnly={true}
-          onLoad={(editor) => this.onEditorLoad(editor)}
+          onLoad={(editor: any) => this.onEditorLoad(editor)}
           editorProps={editorProps}
         />
       );
@@ -96,7 +109,7 @@ export default class Editor extends Component {
       <div id="editor">
         <div className="presets">
           <div>
-            <select onChange={(e) => this.onExampleChange(e.target.value)} value={selectedExample}>
+            <select onChange={(e) => this.onExampleChange(e)} value={selectedExample}>
               {examples.map((example) => (
                 <option value={example.value} key={example.value}>
                   {example.label}
@@ -111,13 +124,3 @@ export default class Editor extends Component {
     );
   }
 }
-
-Editor.propTypes = {
-  html: PropTypes.string.isRequired,
-  onUpdateHtml: PropTypes.func.isRequired,
-  onUpdateExample: PropTypes.func.isRequired,
-  onSetView: PropTypes.func.isRequired,
-  selectedExample: PropTypes.string.isRequired,
-  examples: PropTypes.array.isRequired,
-  view: PropTypes.string.isRequired,
-};

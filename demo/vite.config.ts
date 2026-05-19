@@ -5,7 +5,7 @@ import autoprefixer from 'autoprefixer';
 import { defineConfig } from 'vite';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const srcPath = path.resolve(__dirname, '..', 'src');
+const srcPath = fileURLToPath(new URL('../src', import.meta.url));
 
 export default defineConfig({
   plugins: [react()],

@@ -1,13 +1,13 @@
-import ReactHtmlParser from '@orrisroot/react-html-parser';
+import React from 'react';
+import { convertNodeToElement } from '@orrisroot/react-html-parser';
 
-const { convertNodeToElement } = ReactHtmlParser || {};
-
-export default {
+const options = {
   decodeEntities: true,
-  transform,
+  transform
 };
 
 function transform(node, index) {
+
   // return null to block certain elements
   // don't allow <span> elements
   if (node.type === 'tag' && node.name === 'span') {
@@ -32,4 +32,5 @@ function transform(node, index) {
     node.attribs.target = '_blank';
     return convertNodeToElement(node, index, transform);
   }
+
 }

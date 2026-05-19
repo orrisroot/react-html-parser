@@ -1,11 +1,11 @@
 {
   "name": "react-html-parser-demo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Demo for the React HTML Parser library",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Peter Newnham",
@@ -14,20 +14,23 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@redux-devtools/core": "^3.13.1",
+    "@redux-devtools/core": "^5.0.0",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^6.0.2",
-    "autoprefixer": "^10.4.15",
-    "postcss": "^8.4.35",
+    "autoprefixer": "^10.5.0",
+    "domhandler": "^6.0.1",
+    "postcss": "^8.5.15",
     "sass": "^1.99.0",
+    "typescript": "^6.0.3",
     "vite": "^8.0.13"
   },
   "dependencies": {
     "brace": "^0.11.1",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-ace": "^10.1.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.1.2",
-    "redux": "^4.2.1"
+    "react": "^18.3.1",
+    "react-ace": "^14.0.1",
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.3.0",
+    "redux": "^5.0.1"
   }
 }

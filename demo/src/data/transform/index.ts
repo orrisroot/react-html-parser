@@ -1,4 +1,4 @@
-import display from './display.txt';
+import display from './display.txt?raw';
 import html from './html.html?raw';
 import options from './options';
 
