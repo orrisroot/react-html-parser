@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockStore = vi.hoisted(() => ({
-  generatePropsFromAttributesMock: vi.fn().mockImplementation((attrs: any) => attrs ?? {}),
+  generatePropsFromAttributesMock: vi.fn().mockImplementation((attrs: Record<string, string>) => attrs ?? {}),
   processNodesMock: vi.fn().mockReturnValue('children'),
   isValidTagOrAttributeNameMock: vi.fn().mockReturnValue(true),
   VoidElementsMock: ['void'],
@@ -24,12 +24,13 @@ vi.mock('VoidElements', () => ({
 }));
 
 import TagElementType from 'elementTypes/TagElementType';
+import type { DomElement } from 'interfaces';
 
 describe('Testing `elementTypes/TagElementType`', () => {
   let transform: () => void;
   beforeEach(() => {
     vi.clearAllMocks();
-    mockStore.generatePropsFromAttributesMock.mockImplementation((attrs: any) => attrs ?? {});
+    mockStore.generatePropsFromAttributesMock.mockImplementation((attrs: Record<string, string>) => attrs ?? {});
     mockStore.processNodesMock.mockReturnValue('children');
     mockStore.isValidTagOrAttributeNameMock.mockReturnValue(true);
     mockStore.VoidElementsMock = ['void'];
@@ -44,7 +45,7 @@ describe('Testing `elementTypes/TagElementType`', () => {
       },
       children: 'node 1 children',
     };
-    const node1Element = TagElementType(node1 as any, 'key', transform);
+    const node1Element = TagElementType(node1 as DomElement, 'key', transform);
 
     expect(node1Element.type).toBe('h1');
     expect(node1Element.props).toEqual({
@@ -65,7 +66,7 @@ describe('Testing `elementTypes/TagElementType`', () => {
       children: 'child',
     };
 
-    const voidElement = TagElementType(voidNode as any, 'key');
+    const voidElement = TagElementType(voidNode as DomElement, 'key');
 
     expect(voidElement.type).toBe('void');
     expect(voidElement.props.children).toBe(null);
@@ -77,6 +78,6 @@ describe('Testing `elementTypes/TagElementType`', () => {
       name: 'invalid',
     };
 
-    expect(TagElementType(invalidNode as any)).toBeNull();
+    expect(TagElementType(invalidNode as DomElement)).toBeNull();
   });
 });

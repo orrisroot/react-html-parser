@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
-
-import { setView, updateHtml, updateSelectedExample } from '../actions';
 import type { AppAction } from '../actions';
+import { setView, updateHtml, updateSelectedExample } from '../actions';
+
 import Editor from '../components/Editor';
-import { ExampleKey } from '../data';
+import type { ExampleKey } from '../data';
 import type { AppState } from '../reducers';
 
 interface StateProps {
@@ -37,7 +37,7 @@ const mapDispatchToProps = (dispatch: Dispatch<AppAction>): DispatchProps => {
   };
 };
 
-export default connect<StateProps, DispatchProps, {}, AppState>(
+export default connect<StateProps, DispatchProps, Record<string, never>, AppState>(
   mapStateToProps,
   mapDispatchToProps,
 )(Editor);

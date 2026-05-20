@@ -1,5 +1,5 @@
-import { AppAction } from './actions';
-import data, { ExampleKey } from './data';
+import type { AppAction } from './actions';
+import data, { type ExampleKey } from './data';
 
 export interface AppState {
   html: string;
@@ -8,7 +8,7 @@ export interface AppState {
   view: string;
 }
 
-const initialExample = 'simple';
+const initialExample = 'simple' as ExampleKey;
 
 export const initialState: AppState = {
   html: data[initialExample].html,
@@ -31,8 +31,8 @@ export default function reducer(state: AppState = initialState, action: AppActio
     case 'UPDATE_SELECTED_EXAMPLE':
       return {
         ...state,
-        html: data[action.example as ExampleKey].html,
-        selectedExample: action.example as ExampleKey,
+        html: data[action.example].html,
+        selectedExample: action.example,
       };
     case 'SET_VIEW':
       return {

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Html from '../components/Html';
-import { ExampleKey } from '../data';
+import type { ExampleKey } from '../data';
 import type { AppState } from '../reducers';
 
 interface StateProps {
@@ -9,7 +9,7 @@ interface StateProps {
   selectedExample: ExampleKey;
 }
 
-interface OwnProps {}
+type OwnProps = Record<string, never>;
 
 const mapStateToProps = (state: AppState): StateProps => {
   return {
@@ -18,7 +18,4 @@ const mapStateToProps = (state: AppState): StateProps => {
   };
 };
 
-export default connect<StateProps, {}, OwnProps, AppState>(
-  mapStateToProps,
-  undefined,
-)(Html);
+export default connect<StateProps, Record<string, never>, OwnProps, AppState>(mapStateToProps, undefined)(Html);

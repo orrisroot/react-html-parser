@@ -4,31 +4,12 @@
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
-    "lineWidth": 100
+    "lineWidth": 120
   },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
-      "suspicious": {
-        "noImplicitAnyLet": "off",
-        "noExplicitAny": "off"
-      },
-      "performance": {
-        "noDelete": "off"
-      },
-      "style": {
-        "noParameterAssign": "off",
-        "noUselessElse": "off",
-        "useDefaultParameterLast": "off"
-      },
-      "a11y": {
-        "noSvgWithoutTitle": "off",
-        "useValidAnchor": "off"
-      },
-      "complexity": {
-        "noForEach": "off"
-      }
+      "recommended": true
     }
   },
   "javascript": {

@@ -11,11 +11,7 @@ import type { DomNode, Transform } from './interfaces';
  * @param {Transform} transform Transform function to apply to children of the node
  * @returns {React.ReactNode}
  */
-const convertNodeToElement = (
-  node: DomNode,
-  index: number | string,
-  transform?: Transform,
-): React.ReactNode => {
+const convertNodeToElement = (node: DomNode, index: number | string, transform?: Transform): React.ReactNode => {
   return ElementTypes[node.type]?.(node, index, transform);
 };
 

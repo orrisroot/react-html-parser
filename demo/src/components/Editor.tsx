@@ -1,12 +1,11 @@
-import 'brace';
-import 'brace/mode/html';
-import 'brace/theme/chrome';
-import { Component, FormEvent, ChangeEvent } from 'react';
-import AceEditor from 'react-ace';
+import type { EditorProps } from '@monaco-editor/react';
+import Editor from '@monaco-editor/react';
+import type { ChangeEvent } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 
-import data, { ExampleKey } from '../data';
+import data, { type ExampleKey } from '../data';
 
-interface EditorProps {
+interface AppEditorProps {
   html: string;
   onUpdateHtml: (html: string) => void;
   onUpdateExample: (example: ExampleKey) => void;
@@ -16,111 +15,111 @@ interface EditorProps {
   view: string;
 }
 
-interface EditorState {}
+const EDITOR_OPTIONS: EditorProps['options'] = {
+  wordWrap: 'off' as const,
+  minimap: { enabled: false },
+  scrollBeyondLastLine: false,
+  readOnly: false,
+};
 
-export default class Editor extends Component<EditorProps, EditorState> {
-  onEditorChange(html: string) {
-    this.props.onUpdateHtml(html);
-  }
+export default function AppEditor({
+  html,
+  onUpdateHtml,
+  onUpdateExample,
+  onSetView,
+  selectedExample,
+  examples,
+  view,
+}: AppEditorProps) {
+  const viewRef = useRef(view);
+  viewRef.current = view;
 
-  onEditorLoad(editor: any) {
-    editor.session.setUseWorker(false);
-    editor.session.setUseWrapMode(true);
-  }
+  const handleEditorChange = useCallback(
+    (value: string | undefined) => {
+      if (value !== undefined && viewRef.current === 'html') {
+        onUpdateHtml(value);
+      }
+    },
+    [onUpdateHtml],
+  );
 
-  onExampleChange(e: ChangeEvent<HTMLSelectElement>) {
-    this.props.onUpdateExample(e.target.value as ExampleKey);
-  }
+  const handleExampleChange = useCallback(
+    (e: ChangeEvent<HTMLSelectElement>) => {
+      onUpdateExample(e.target.value as ExampleKey);
+    },
+    [onUpdateExample],
+  );
 
-  onViewChange(view: string) {
-    this.props.onSetView(view);
-  }
+  const handleViewChange = useCallback(
+    (newView: string) => {
+      onSetView(newView);
+    },
+    [onSetView],
+  );
 
-  generateViewLinks(activeView: string) {
-    const views = [
+  const views = useMemo(
+    () => [
       { id: 'html', label: 'HTML' },
       { id: 'options', label: 'Options' },
-    ];
+    ],
+    [],
+  );
 
-    return views.map((view) => {
-      const contents =
-        view.id === activeView ? (
-          view.label
-        ) : (
-          <a
-            href="#"
-            onClick={(e: FormEvent) => {
-              e.preventDefault();
-              this.onViewChange(view.id);
-            }}
-          >
-            {view.label}
-          </a>
-        );
-      return <li key={view.id}>{contents}</li>;
-    });
-  }
+  const editorValue = useMemo(
+    () =>
+      view === 'html'
+        ? html
+        : (data[selectedExample].display ??
+          `const options = ${JSON.stringify(data[selectedExample].options, null, 2)}`),
+    [view, html, selectedExample],
+  );
 
-  generateEditor(view: string) {
-    const editorProps = {
-      $blockScrolling: Number.POSITIVE_INFINITY,
-      wrap: true,
-    } as Record<string, unknown>;
+  const editorLanguage = useMemo(() => {
+    return view === 'html' ? 'html' : 'javascript';
+  }, [view]);
 
-    if (view === 'html') {
-      const { html } = this.props;
-      return (
-        <AceEditor
-          mode="html"
-          theme="chrome"
-          name="HTML_EDITOR"
-          value={html}
-          width="100%"
-          height="auto"
-          onChange={(value: string) => this.onEditorChange(value)}
-          onLoad={(editor: any) => this.onEditorLoad(editor)}
-          editorProps={editorProps}
-        />
-      );
-    } else {
-      const { selectedExample } = this.props;
-      const value = data[selectedExample].display
-        ? data[selectedExample].display
-        : `const options = ${JSON.stringify(data[selectedExample].options, null, 2)}`;
-      return (
-        <AceEditor
-          mode="javascript"
-          theme="chrome"
-          name="HTML_EDITOR"
-          value={value}
-          width="100%"
-          height="auto"
-          readOnly={true}
-          onLoad={(editor: any) => this.onEditorLoad(editor)}
-          editorProps={editorProps}
-        />
-      );
-    }
-  }
+  const isReadOnly = useMemo(() => {
+    return view !== 'html';
+  }, [view]);
 
-  render() {
-    const { examples, selectedExample, view } = this.props;
-    return (
-      <div id="editor">
-        <div className="presets">
-          <div>
-            <select onChange={(e) => this.onExampleChange(e)} value={selectedExample}>
-              {examples.map((example) => (
-                <option value={example.value} key={example.value}>
-                  {example.label}
-                </option>
-              ))}
-            </select>
-          </div>
-          <ul>{this.generateViewLinks(view)}</ul>
+  const editorOptions = useMemo(() => ({ ...EDITOR_OPTIONS, readOnly: isReadOnly }), [isReadOnly]);
+
+  return (
+    <div id="editor">
+      <div className="presets">
+        <div>
+          <select onChange={handleExampleChange} value={selectedExample}>
+            {examples.map((example) => (
+              <option value={example.value} key={example.value}>
+                {example.label}
+              </option>
+            ))}
+          </select>
         </div>
-        {this.generateEditor(view)}
+        <ul>
+          {views.map((v) => (
+            <li key={v.id}>
+              {v.id === view ? (
+                v.label
+              ) : (
+                <button type="button" onClick={() => handleViewChange(v.id)}>
+                  {v.label}
+                </button>
+              )}
+            </li>
+          ))}
+        </ul>
       </div>
-    );
-  }
+      <div className="editor-wrapper">
+        <Editor
+          language={editorLanguage}
+          value={editorValue}
+          onChange={handleEditorChange}
+          options={editorOptions}
+          theme="vs"
+          loading={<span>Loading editor...</span>}
+        />
+      </div>
+    </div>
+  );
 }

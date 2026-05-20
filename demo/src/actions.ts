@@ -1,3 +1,5 @@
+import type { ExampleKey } from './data';
+
 export interface UpdateHtmlAction {
   type: 'UPDATE_HTML';
   html: string;
@@ -5,7 +7,7 @@ export interface UpdateHtmlAction {
 
 export interface UpdateSelectedExampleAction {
   type: 'UPDATE_SELECTED_EXAMPLE';
-  example: string;
+  example: ExampleKey;
 }
 
 export interface SetViewAction {
@@ -22,7 +24,7 @@ export function updateHtml(html: string): UpdateHtmlAction {
   };
 }
 
-export function updateSelectedExample(example: string): UpdateSelectedExampleAction {
+export function updateSelectedExample(example: ExampleKey): UpdateSelectedExampleAction {
   return {
     type: 'UPDATE_SELECTED_EXAMPLE',
     example,

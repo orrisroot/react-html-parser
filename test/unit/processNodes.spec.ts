@@ -19,11 +19,11 @@ describe('Testing `processNodes`', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mockStore.isEmptyTextNodeMock.mockReturnValue(false);
-    mockStore.convertNodeToElementMock.mockImplementation((node: any) => node);
+    mockStore.convertNodeToElementMock.mockImplementation((node: string) => node);
   });
 
   it('should filter out empty text nodes', () => {
-    mockStore.isEmptyTextNodeMock.mockImplementation((node: any) => node !== 'node2');
+    mockStore.isEmptyTextNodeMock.mockImplementation((node: string) => node !== 'node2');
 
     const nodes = ['node1', 'node2', 'node3'];
 

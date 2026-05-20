@@ -10,6 +10,7 @@ vi.mock('generatePropsFromAttributes', () => ({
 }));
 
 import StyleElementType from 'elementTypes/StyleElementType';
+import type { DomElement } from 'interfaces';
 
 describe('Testing `elementTypes/StyleElementType`', () => {
   beforeEach(() => {
@@ -21,7 +22,7 @@ describe('Testing `elementTypes/StyleElementType`', () => {
     const node = {
       children: [{ data: 'style data' }],
     };
-    const styleElement = StyleElementType(node as any, 'key');
+    const styleElement = StyleElementType(node as DomElement, 'key');
 
     expect(styleElement.type).toBe('style');
     expect(styleElement.props).toEqual({
@@ -35,7 +36,7 @@ describe('Testing `elementTypes/StyleElementType`', () => {
     const node = {
       children: [],
     };
-    const styleElement = StyleElementType(node as any, 'key');
+    const styleElement = StyleElementType(node as DomElement, 'key');
 
     expect(styleElement.type).toBe('style');
     expect(styleElement.props).toEqual({

@@ -1,10 +1,10 @@
-import React from 'react';
+import type { Transform } from '@orrisroot/react-html-parser';
 import { convertNodeToElement } from '@orrisroot/react-html-parser';
-import type { AnyNode as DomNode, Element as DomElement } from 'domhandler';
+import type { Element as DomElement, Node as DomNode } from 'domhandler';
 
 const isTag = (node: DomNode): node is DomElement => node.type === 'tag';
 
-const transform = (node: DomNode, index: number | string) => {
+const transform: Transform = (node, index) => {
   if (isTag(node)) {
     // return null to block certain elements
     // don't allow <span> elements

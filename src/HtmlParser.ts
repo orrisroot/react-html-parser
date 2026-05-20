@@ -16,7 +16,7 @@ const HtmlParser = (html: string, options?: Options): React.ReactNode[] => {
   const transform = options?.transform;
   const defaultPreprocessNodes = (nodes: DomNode[]) => nodes;
   const preprocessNodes = options?.preprocessNodes ?? defaultPreprocessNodes;
-  const nodes = preprocessNodes(htmlparser2.parseDOM(html, { decodeEntities }));
+  const nodes = preprocessNodes(htmlparser2.parseDocument(html, { decodeEntities }).children);
   return processNodes(nodes, transform);
 };
 

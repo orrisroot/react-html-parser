@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockStore = vi.hoisted(() => ({
-  htmlAttributesToReactMock: vi.fn().mockImplementation((attribs: any) => attribs),
+  htmlAttributesToReactMock: vi.fn().mockImplementation((attribs: Record<string, string>) => attribs),
   inlineStyleToObjectMock: vi.fn().mockReturnValue('converted-style'),
 }));
 
@@ -18,7 +18,7 @@ import generatePropsFromAttributes from 'generatePropsFromAttributes';
 describe('Testing `utils/generatePropsFromAttributes`', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    mockStore.htmlAttributesToReactMock.mockImplementation((attribs: any) => attribs);
+    mockStore.htmlAttributesToReactMock.mockImplementation((attribs: Record<string, string>) => attribs);
     mockStore.inlineStyleToObjectMock.mockReturnValue('converted-style');
   });
 

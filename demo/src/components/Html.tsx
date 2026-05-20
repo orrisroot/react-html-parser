@@ -1,6 +1,6 @@
 import ReactHtmlParser from '@orrisroot/react-html-parser';
 
-import data, { ExampleKey } from '../data';
+import data, { type ExampleKey } from '../data';
 
 interface HtmlProps {
   html: string;

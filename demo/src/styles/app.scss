@@ -1,34 +1,46 @@
-$button-background: #3498db;
+html,
+body {
+  background: #f5f5f5;
+  margin: 0;
+  height: 100%;
+}
 
-#editor {
-  border: 1px solid #aaa;
+body {
+  padding: 1rem;
+  color: #000;
+  font-size: 1rem;
+  font-family: 'Proxima Nova', 'proxima-nova', sans-serif;
+  font-weight: normal;
+  line-height: 1.6;
+  letter-spacing: 0.8px;
+}
+
+h1 {
+  line-height: 1;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100%;
+}
+
+#app {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  #HTML_EDITOR {
-    flex: 1;
-  }
-  .presets {
-    padding: 5px 10px;
-    border-bottom: 1px solid #aaa;
-    display: flex;
+}
 
-    ul {
-      margin: 0;
-      padding: 0;
-      flex: 1;
-      text-align: right;
-    }
+main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
 
-    li {
-      margin: 0;
-      padding: 0 10px;
-      list-style-type: none;
-      display: inline;
-      border-right: 1px solid #aaa;
-      &:last-of-type {
-        border: none;
-        padding-right: 0;
-      }
-    }
-  }
+main > div {
+  flex: 1;
+  margin: 0 1rem 0 0;
 }

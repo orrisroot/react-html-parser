@@ -13,19 +13,11 @@ export default defineConfig({
       convertNodeToElement: path.resolve(__dirname, 'src', 'convertNodeToElement.ts'),
       HtmlParser: path.resolve(__dirname, 'src', 'HtmlParser.ts'),
       VoidElements: path.resolve(__dirname, 'src', 'dom/elements/VoidElements.ts'),
-      generatePropsFromAttributes: path.resolve(
-        __dirname,
-        'src',
-        'utils/generatePropsFromAttributes.ts',
-      ),
+      generatePropsFromAttributes: path.resolve(__dirname, 'src', 'utils/generatePropsFromAttributes.ts'),
       htmlAttributesToReact: path.resolve(__dirname, 'src', 'utils/htmlAttributesToReact.ts'),
       inlineStyleToObject: path.resolve(__dirname, 'src', 'utils/inlineStyleToObject.ts'),
       isEmptyTextNode: path.resolve(__dirname, 'src', 'utils/isEmptyTextNode.ts'),
-      isValidTagOrAttributeName: path.resolve(
-        __dirname,
-        'src',
-        'utils/isValidTagOrAttributeName.ts',
-      ),
+      isValidTagOrAttributeName: path.resolve(__dirname, 'src', 'utils/isValidTagOrAttributeName.ts'),
     },
   },
   test: {

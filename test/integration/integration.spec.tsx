@@ -1,15 +1,12 @@
-import HtmlParser, { convertNodeToElement, htmlparser2 } from 'index';
+import HtmlParser, { convertNodeToElement, type DomNode, htmlparser2, type Options } from 'index';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
-const reactVersion = Number.parseInt(
-  require('react/package.json').version.match(/^(\d+)\./)[1],
-  10,
-);
+const reactVersion = Number.parseInt(require('react/package.json').version.match(/^(\d+)\./)[1], 10);
 
-class HtmlParserComponent extends React.Component<{ html: string; options?: any }> {
+class HtmlParserComponent extends React.Component<{ html: string; options?: Record<string, unknown> }> {
   render() {
     return <div>{HtmlParser(this.props.html, this.props.options)}</div>;
   }
@@ -19,10 +16,8 @@ HtmlParserComponent.propTypes = {
   options: PropTypes.object,
 };
 
-const test = (html: string, override: string | null = null, options: any = {}) => {
-  const actual = ReactDOMServer.renderToStaticMarkup(
-    <HtmlParserComponent html={html} options={options} />,
-  );
+const test = (html: string, override: string | null = null, options: Options = {}) => {
+  const actual = ReactDOMServer.renderToStaticMarkup(<HtmlParserComponent html={html} options={options} />);
   const expected = `<div>${(override === null && html) || override}</div>`;
   expect(actual).toBe(expected);
 };
@@ -101,7 +96,7 @@ describe('Integration tests: ', () => {
   describe('transform function', () => {
     it('should use the response when it is not undefined', () => {
       test('<span>test</span><div>another</div>', '<p>transformed</p><p>transformed</p>', {
-        transform(_node: any, index: number) {
+        transform(_node: DomNode, index: number) {
           return <p key={index}>transformed</p>;
         },
       });
@@ -109,7 +104,7 @@ describe('Integration tests: ', () => {
 
     it('should not render elements and children when returning null', () => {
       test('<p>test<span>inner test<b>bold child</b></span></p>', '<p>test</p>', {
-        transform(node: any) {
+        transform(node: DomNode) {
           if (node.type === 'tag' && node.name === 'span') {
             return null;
           }
@@ -119,7 +114,7 @@ describe('Integration tests: ', () => {
 
     it('should allow modifying nodes', () => {
       test('<a href="/test">test link</a>', '<a href="/changed">test link</a>', {
-        transform(node: any, index: number) {
+        transform(node: DomNode, index: number) {
           node.attribs.href = '/changed';
           return convertNodeToElement(node, index);
         },
@@ -127,7 +122,7 @@ describe('Integration tests: ', () => {
     });
 
     it('should allow passing the transform function down to children', () => {
-      const transform = (node: any, index: number) => {
+      const transform = (node: DomNode, index: number) => {
         if (node.type === 'tag') {
           if (node.name === 'ul') {
             node.attribs.class = 'test';
@@ -138,13 +133,9 @@ describe('Integration tests: ', () => {
           return node.data.replace(/list/, 'changed');
         }
       };
-      test(
-        '<ul><li>list 1</li><li>list 2</li></ul>',
-        '<ul class="test"><li>changed 1</li><li>changed 2</li></ul>',
-        {
-          transform,
-        },
-      );
+      test('<ul><li>list 1</li><li>list 2</li></ul>', '<ul class="test"><li>changed 1</li><li>changed 2</li></ul>', {
+        transform,
+      });
     });
   });
 
@@ -158,7 +149,7 @@ describe('Integration tests: ', () => {
 
   it('should preprocess nodes correctly', () => {
     test('<div>preprocess test</div>', '<div>preprocess test</div><div>preprocess test</div>', {
-      preprocessNodes(nodes: any) {
+      preprocessNodes(nodes: DomNode[]) {
         return [...nodes, ...nodes];
       },
     });
