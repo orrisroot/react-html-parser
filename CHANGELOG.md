@@ -1,5 +1,20 @@
 # Change Log
 
+## v3.0.0
+
+### Breaking Changes
+
+- Migrated development toolchain from webpack/karma/eslint to vite/vitest/Biome
+- Removed ESLint, Prettier, and Karma configurations
+- Restructured demo application with TypeScript and modern Vite setup
+
+### Updates
+
+- Updated the depending `htmlparser2` library version to `^12.0.0`
+- Updated peer dependency React version to `^19.0.0`
+- Updated all development dependencies to latest versions
+- Enhanced package contents — removed development tool files from npm package
+
 ## v2.1.2
 
 ### Updates

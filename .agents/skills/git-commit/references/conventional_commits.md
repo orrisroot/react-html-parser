@@ -35,12 +35,13 @@ When drafting, validating, or executing Git commits, you must strictly adhere to
    * The subject line (first line) must not exceed 72 characters, ideally 50 characters or less.
    * **Every single line within the commit message body must also be wrapped at 72 characters or less.** If an explanation runs longer, you must manually insert line breaks to keep each line under the 72-character threshold.
 
-3. **Paragraph Separation via Multiple `-m` Flags**:
-   * When providing or executing the final `git commit` command, **you must use a separate `-m` option for each distinct paragraph** (e.g., the subject line, body paragraphs, and footers). Do not use a single multi-line string.
+3. **Part Separation via Multiple `-m` Flags**:
+   * Use one `-m` flag per structural part: the subject line, the body, and the footer. Use at most three `-m` flags in total.
+   * All body content — including bullet lists and multi-sentence explanations — must be placed in a single `-m` value. Do not split body content across multiple `-m` flags; doing so inserts unwanted blank lines between items.
    * *Example:*
 
      ```bash
-     git commit -m "feat(auth): add jwt authentication" -m "Validate tokens on every incoming request. Secure endpoints by rejecting expired credentials." -m "BREAKING CHANGE: The old session-based cookie auth is deprecated."
+     git commit -m "feat(auth): add jwt authentication" -m $'Validate tokens on every incoming request.\nSecure endpoints by rejecting expired credentials.\n- Added middleware for token validation\n- Removed legacy session handling' -m "BREAKING CHANGE: The old session-based cookie auth is deprecated."
      ```
 
 4. **Co-authored-by Restriction**:

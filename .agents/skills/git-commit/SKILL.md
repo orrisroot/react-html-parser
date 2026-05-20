@@ -4,7 +4,7 @@ metadata:
     github-path: skills/git-commit
     github-ref: refs/heads/main
     github-repo: https://github.com/orrisroot/agent-skills
-    github-tree-sha: 55f44eb2a8ac455b0953b2fb6399f5a628066b51
+    github-tree-sha: e578a03c4a4295e65d0b0ef737d9ee979fbf08a0
 name: git-commit
 ---
 # Git Commit Operator

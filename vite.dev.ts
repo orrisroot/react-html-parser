@@ -18,6 +18,7 @@ export default defineConfig({
         },
         dir: path.resolve(__dirname, 'dist'),
         entryFileNames: 'react-html-parser.js',
+        exports: 'named',
       },
     },
   },

@@ -1,6 +1,11 @@
+.agents/
+.cspell.json
+biome.json
 tsconfig.json
 tsconfig.*.json
 node_modules
 /coverage/
 /test/
-/demo/dist/
+/demo/
+vite.*.ts
+vitest.config.ts

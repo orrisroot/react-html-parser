@@ -1,20 +1,12 @@
 import HtmlParser, { convertNodeToElement, type DomNode, htmlparser2, type Options } from 'index';
-import PropTypes from 'prop-types';
-import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 const reactVersion = Number.parseInt(require('react/package.json').version.match(/^(\d+)\./)[1], 10);
 
-class HtmlParserComponent extends React.Component<{ html: string; options?: Record<string, unknown> }> {
-  render() {
-    return <div>{HtmlParser(this.props.html, this.props.options)}</div>;
-  }
+function HtmlParserComponent({ html, options }: { html: string; options?: Record<string, unknown> }) {
+  return <div>{HtmlParser(html, options)}</div>;
 }
-HtmlParserComponent.propTypes = {
-  html: PropTypes.string.isRequired,
-  options: PropTypes.object,
-};
 
 const test = (html: string, override: string | null = null, options: Options = {}) => {
   const actual = ReactDOMServer.renderToStaticMarkup(<HtmlParserComponent html={html} options={options} />);
