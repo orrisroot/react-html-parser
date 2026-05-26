@@ -41,8 +41,7 @@
     "demo:clean": "rimraf demo/dist",
     "demo:dev": "cd demo && npm run dev",
     "demo:build": "cd demo && npm run build",
-    "demo:push": "cd demo/dist && git init && git commit --allow-empty -m 'update demo' && git checkout -b gh-pages && git add . && git commit -am 'update demo' && git push git@github.com:orrisroot/react-html-parser gh-pages --force",
-    "demo:publish": "npm run demo:clean && npm run demo:build && npm run demo:push"
+    "demo:publish": "npm run demo:clean && npm run demo:build"
   },
   "repository": {
     "type": "git",
