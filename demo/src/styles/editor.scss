@@ -30,6 +30,44 @@ $button-background: #3498db;
         padding-right: 0;
       }
     }
+
+    .view-tab {
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      color: #555;
+      text-decoration: none;
+      outline: none;
+
+      &:hover {
+        color: #3498db;
+        text-decoration: underline;
+      }
+
+      &:focus-visible {
+        outline: 2px solid #3498db;
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      &.active {
+        color: #333;
+        font-weight: bold;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 2px;
+          background: #3498db;
+        }
+      }
+    }
   }
   .editor-wrapper {
     flex: 1;

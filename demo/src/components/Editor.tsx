@@ -99,13 +99,13 @@ export default function AppEditor({
         <ul>
           {views.map((v) => (
             <li key={v.id}>
-              {v.id === view ? (
-                v.label
-              ) : (
-                <button type="button" onClick={() => handleViewChange(v.id)}>
-                  {v.label}
-                </button>
-              )}
+              <button
+                type="button"
+                className={`view-tab ${v.id === view ? 'active' : ''}`}
+                onClick={() => handleViewChange(v.id)}
+              >
+                {v.label}
+              </button>
             </li>
           ))}
         </ul>
