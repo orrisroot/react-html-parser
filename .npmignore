@@ -2,10 +2,12 @@
 .cspell.json
 biome.json
 tsconfig.json
-tsconfig.*.json
+tsdown.config.ts
 node_modules
 /coverage/
 /test/
 /demo/
+/lib/
+/src/
 vite.*.ts
 vitest.config.ts

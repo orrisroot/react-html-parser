@@ -14,13 +14,5 @@
     "subdir",
     "testattribute"
   ],
-  "ignorePaths": [
-    "coverage",
-    "dist",
-    "lib",
-    "node_modules",
-    "package.json",
-    "package-lock.json",
-    "src/dom/attributes/*.ts"
-  ]
+  "ignorePaths": ["coverage", "dist", "node_modules", "package.json", "package-lock.json", "src/dom/attributes/*.ts"]
 }

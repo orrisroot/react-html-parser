@@ -2,14 +2,25 @@
   "name": "@orrisroot/react-html-parser",
   "version": "3.0.0",
   "description": "Parse HTML into React components",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.cts",
+  "exports": {
+    "import": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    },
+    "require": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    }
+  },
   "umd:main": "dist/react-html-parser.min.js",
   "unpkg": "dist/react-html-parser.min.js",
   "jsdelivr": "dist/react-html-parser.min.js",
   "source": "src/index.ts",
   "scripts": {
-    "clean": "rimraf coverage dist lib",
+    "clean": "rimraf coverage dist",
     "check": "npm run lint && npm run test",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -18,7 +29,7 @@
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
     "build": "npm run build:lib && npm run build:umd:min && npm run build:umd",
-    "build:lib": "rimraf lib && tsc -p tsconfig.lib.json && tsc -p tsconfig.types.json",
+    "build:lib": "tsdown",
     "build:umd": "vite build --config vite.dev.ts",
     "build:umd:min": "vite build --config vite.prod.ts",
     "prerelease": "npm run clean && npm run check",
@@ -60,9 +71,10 @@
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "rimraf": "^6.1.3",
-    "terser": "^5.47.1",
+    "terser": "^5.48.0",
+    "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
-    "vite": "^8.0.13",
+    "vite": "^8.0.14",
     "vitest": "^4.1.7"
   },
   "dependencies": {
