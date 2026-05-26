@@ -1,6 +1,5 @@
-import type { Transform } from '@orrisroot/react-html-parser';
+import type { DomElement, DomNode, Transform } from '@orrisroot/react-html-parser';
 import { convertNodeToElement } from '@orrisroot/react-html-parser';
-import type { Element as DomElement, Node as DomNode } from 'domhandler';
 
 const isTag = (node: DomNode): node is DomElement => node.type === 'tag';
 
