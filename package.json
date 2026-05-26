@@ -1,6 +1,6 @@
 {
   "name": "@orrisroot/react-html-parser",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Parse HTML into React components",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",

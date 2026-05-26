@@ -1,6 +1,6 @@
 {
   "name": "react-html-parser-demo",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Demo for the React HTML Parser library",
   "type": "module",
   "scripts": {
